@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.engine_system.mapper.ResumeNineMapper">
+  <resultMap id="BaseResultMap" type="com.example.engine_system.entity.ResumeNine">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="plane_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="nine_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="ground_all_hour" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ground_all_minute" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ground_big_hour" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ground_big_minute" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ground_add_hour" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ground_add_minute" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="air_all_hour" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="air_all_minute" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="air_big_hour" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="air_big_minute" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="air_add_hour" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="air_add_minute" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="total_time_hour" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="total_time_minute" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="start_time" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, plane_id, nine_date, ground_all_hour, ground_all_minute, ground_big_hour, ground_big_minute, 
+    ground_add_hour, ground_add_minute, air_all_hour, air_all_minute, air_big_hour, air_big_minute, 
+    air_add_hour, air_add_minute, total_time_hour, total_time_minute, start_time
+  </sql>
+
+  <select id="getResumeNineById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from resume_nine where plane_id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <insert id="addResumeNine" parameterType="java.util.ArrayList">
+    insert into resume_nine (id, plane_id, nine_date, ground_all_hour, ground_all_minute, ground_big_hour, ground_big_minute,
+    ground_add_hour, ground_add_minute, air_all_hour, air_all_minute, air_big_hour, air_big_minute,
+    air_add_hour, air_add_minute, total_time_hour, total_time_minute, start_time) values
+    <foreach collection="list" index="index" separator="," item="item">
+      (#{item.id,jdbcType=INTEGER}, #{item.planeId,jdbcType=INTEGER}, #{item.nineDate,jdbcType=DATE},
+      #{item.groundAllHour,jdbcType=INTEGER}, #{item.groundAllMinute,jdbcType=INTEGER}, #{item.groundBigHour,jdbcType=INTEGER},
+      #{item.groundBigMinute,jdbcType=INTEGER}, #{item.groundAddHour,jdbcType=INTEGER}, #{item.groundAddMinute,jdbcType=INTEGER},
+      #{item.airAllHour,jdbcType=INTEGER}, #{item.airAllMinute,jdbcType=INTEGER}, #{item.airBigHour,jdbcType=INTEGER},
+      #{item.airBigMinute,jdbcType=INTEGER}, #{item.airAddHour,jdbcType=INTEGER}, #{item.airAddMinute,jdbcType=INTEGER},
+      #{item.totalTimeHour,jdbcType=INTEGER}, #{item.totalTimeMinute,jdbcType=INTEGER}, #{item.startTime,jdbcType=INTEGER})
+    </foreach>
+    ON DUPLICATE KEY UPDATE
+    plane_id = values(plane_id),
+    nine_date = values(nine_date),
+    ground_all_hour = values(ground_all_hour),
+    ground_all_minute = values(ground_all_minute),
+    ground_big_hour = values(ground_big_hour),
+    ground_big_minute = values(ground_big_minute),
+    ground_add_hour = values(ground_add_hour),
+    ground_add_minute = values(ground_add_minute),
+    air_all_hour = values(air_all_hour),
+    air_all_minute = values(air_all_minute),
+    air_big_hour = values(air_big_hour),
+    air_big_minute = values(air_big_minute),
+    air_add_hour = values(air_add_hour),
+    air_add_minute = values(air_add_minute),
+    total_time_hour = values(total_time_hour),
+    total_time_minute = values(total_time_minute),
+    start_time = values(start_time)
+  </insert>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from resume_nine
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from resume_nine
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.engine_system.entity.ResumeNine">
+    insert into resume_nine (id, plane_id, nine_date, 
+      ground_all_hour, ground_all_minute, ground_big_hour, 
+      ground_big_minute, ground_add_hour, ground_add_minute, 
+      air_all_hour, air_all_minute, air_big_hour, 
+      air_big_minute, air_add_hour, air_add_minute, 
+      total_time_hour, total_time_minute, start_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{planeId,jdbcType=INTEGER}, #{nineDate,jdbcType=DATE}, 
+      #{groundAllHour,jdbcType=INTEGER}, #{groundAllMinute,jdbcType=INTEGER}, #{groundBigHour,jdbcType=INTEGER}, 
+      #{groundBigMinute,jdbcType=INTEGER}, #{groundAddHour,jdbcType=INTEGER}, #{groundAddMinute,jdbcType=INTEGER}, 
+      #{airAllHour,jdbcType=INTEGER}, #{airAllMinute,jdbcType=INTEGER}, #{airBigHour,jdbcType=INTEGER}, 
+      #{airBigMinute,jdbcType=INTEGER}, #{airAddHour,jdbcType=INTEGER}, #{airAddMinute,jdbcType=INTEGER}, 
+      #{totalTimeHour,jdbcType=INTEGER}, #{totalTimeMinute,jdbcType=INTEGER}, #{startTime,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.engine_system.entity.ResumeNine">
+    insert into resume_nine
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="planeId != null">
+        plane_id,
+      </if>
+      <if test="nineDate != null">
+        nine_date,
+      </if>
+      <if test="groundAllHour != null">
+        ground_all_hour,
+      </if>
+      <if test="groundAllMinute != null">
+        ground_all_minute,
+      </if>
+      <if test="groundBigHour != null">
+        ground_big_hour,
+      </if>
+      <if test="groundBigMinute != null">
+        ground_big_minute,
+      </if>
+      <if test="groundAddHour != null">
+        ground_add_hour,
+      </if>
+      <if test="groundAddMinute != null">
+        ground_add_minute,
+      </if>
+      <if test="airAllHour != null">
+        air_all_hour,
+      </if>
+      <if test="airAllMinute != null">
+        air_all_minute,
+      </if>
+      <if test="airBigHour != null">
+        air_big_hour,
+      </if>
+      <if test="airBigMinute != null">
+        air_big_minute,
+      </if>
+      <if test="airAddHour != null">
+        air_add_hour,
+      </if>
+      <if test="airAddMinute != null">
+        air_add_minute,
+      </if>
+      <if test="totalTimeHour != null">
+        total_time_hour,
+      </if>
+      <if test="totalTimeMinute != null">
+        total_time_minute,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="planeId != null">
+        #{planeId,jdbcType=INTEGER},
+      </if>
+      <if test="nineDate != null">
+        #{nineDate,jdbcType=DATE},
+      </if>
+      <if test="groundAllHour != null">
+        #{groundAllHour,jdbcType=INTEGER},
+      </if>
+      <if test="groundAllMinute != null">
+        #{groundAllMinute,jdbcType=INTEGER},
+      </if>
+      <if test="groundBigHour != null">
+        #{groundBigHour,jdbcType=INTEGER},
+      </if>
+      <if test="groundBigMinute != null">
+        #{groundBigMinute,jdbcType=INTEGER},
+      </if>
+      <if test="groundAddHour != null">
+        #{groundAddHour,jdbcType=INTEGER},
+      </if>
+      <if test="groundAddMinute != null">
+        #{groundAddMinute,jdbcType=INTEGER},
+      </if>
+      <if test="airAllHour != null">
+        #{airAllHour,jdbcType=INTEGER},
+      </if>
+      <if test="airAllMinute != null">
+        #{airAllMinute,jdbcType=INTEGER},
+      </if>
+      <if test="airBigHour != null">
+        #{airBigHour,jdbcType=INTEGER},
+      </if>
+      <if test="airBigMinute != null">
+        #{airBigMinute,jdbcType=INTEGER},
+      </if>
+      <if test="airAddHour != null">
+        #{airAddHour,jdbcType=INTEGER},
+      </if>
+      <if test="airAddMinute != null">
+        #{airAddMinute,jdbcType=INTEGER},
+      </if>
+      <if test="totalTimeHour != null">
+        #{totalTimeHour,jdbcType=INTEGER},
+      </if>
+      <if test="totalTimeMinute != null">
+        #{totalTimeMinute,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.engine_system.entity.ResumeNine">
+    update resume_nine
+    <set>
+      <if test="planeId != null">
+        plane_id = #{planeId,jdbcType=INTEGER},
+      </if>
+      <if test="nineDate != null">
+        nine_date = #{nineDate,jdbcType=DATE},
+      </if>
+      <if test="groundAllHour != null">
+        ground_all_hour = #{groundAllHour,jdbcType=INTEGER},
+      </if>
+      <if test="groundAllMinute != null">
+        ground_all_minute = #{groundAllMinute,jdbcType=INTEGER},
+      </if>
+      <if test="groundBigHour != null">
+        ground_big_hour = #{groundBigHour,jdbcType=INTEGER},
+      </if>
+      <if test="groundBigMinute != null">
+        ground_big_minute = #{groundBigMinute,jdbcType=INTEGER},
+      </if>
+      <if test="groundAddHour != null">
+        ground_add_hour = #{groundAddHour,jdbcType=INTEGER},
+      </if>
+      <if test="groundAddMinute != null">
+        ground_add_minute = #{groundAddMinute,jdbcType=INTEGER},
+      </if>
+      <if test="airAllHour != null">
+        air_all_hour = #{airAllHour,jdbcType=INTEGER},
+      </if>
+      <if test="airAllMinute != null">
+        air_all_minute = #{airAllMinute,jdbcType=INTEGER},
+      </if>
+      <if test="airBigHour != null">
+        air_big_hour = #{airBigHour,jdbcType=INTEGER},
+      </if>
+      <if test="airBigMinute != null">
+        air_big_minute = #{airBigMinute,jdbcType=INTEGER},
+      </if>
+      <if test="airAddHour != null">
+        air_add_hour = #{airAddHour,jdbcType=INTEGER},
+      </if>
+      <if test="airAddMinute != null">
+        air_add_minute = #{airAddMinute,jdbcType=INTEGER},
+      </if>
+      <if test="totalTimeHour != null">
+        total_time_hour = #{totalTimeHour,jdbcType=INTEGER},
+      </if>
+      <if test="totalTimeMinute != null">
+        total_time_minute = #{totalTimeMinute,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.engine_system.entity.ResumeNine">
+    update resume_nine
+    set plane_id = #{planeId,jdbcType=INTEGER},
+      nine_date = #{nineDate,jdbcType=DATE},
+      ground_all_hour = #{groundAllHour,jdbcType=INTEGER},
+      ground_all_minute = #{groundAllMinute,jdbcType=INTEGER},
+      ground_big_hour = #{groundBigHour,jdbcType=INTEGER},
+      ground_big_minute = #{groundBigMinute,jdbcType=INTEGER},
+      ground_add_hour = #{groundAddHour,jdbcType=INTEGER},
+      ground_add_minute = #{groundAddMinute,jdbcType=INTEGER},
+      air_all_hour = #{airAllHour,jdbcType=INTEGER},
+      air_all_minute = #{airAllMinute,jdbcType=INTEGER},
+      air_big_hour = #{airBigHour,jdbcType=INTEGER},
+      air_big_minute = #{airBigMinute,jdbcType=INTEGER},
+      air_add_hour = #{airAddHour,jdbcType=INTEGER},
+      air_add_minute = #{airAddMinute,jdbcType=INTEGER},
+      total_time_hour = #{totalTimeHour,jdbcType=INTEGER},
+      total_time_minute = #{totalTimeMinute,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
