@@ -12,49 +12,30 @@ public class Resume {
     private Date engineDate;
 
     private Integer engineStartTimes;
-
     private String engineSGroundFlight;
-
     private String engineSpGroundFlight;
-
     private String engineSFlight;
-
     private String engineSpFlight;
-
     private String engineSStateWork;
-
     private String engineYsStateWork;
-
     private String engineSpStateWork;
-
     private String engineSAllStateWork;
-
     private String engineSpAllStateWork;
 
     private Integer engineSMainCycle;
-
     private Integer engineSpMainCycle;
 
     private Date receiverDate;
 
     private Integer receiverStartTimes;
-
     private String receiverSGroundFlight;
-
     private String receiverSpGroundFlight;
-
     private String receiverSFlight;
-
     private String receiverSpFlight;
-
     private String receiverSStateWork;
-
     private String receiverYsStateWork;
-
     private String receiverSpStateWork;
-
     private String receiverSAllStateWork;
-
     private String receiverSpAllStateWork;
 
     private Date sEngineDate;

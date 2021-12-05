@@ -22,7 +22,5 @@ public interface ResumeMapper {
 
     int updateByPrimaryKey(Resume record);
 
-    int updateList(List<Resume> record);
-
     List<Resume> getResumeById(@Param("id") Integer id, @Param("type") String type);
 }

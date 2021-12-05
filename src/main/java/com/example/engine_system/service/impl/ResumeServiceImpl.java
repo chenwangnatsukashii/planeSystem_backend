@@ -3,6 +3,7 @@ package com.example.engine_system.service.impl;
 import com.example.engine_system.entity.Resume;
 import com.example.engine_system.mapper.ResumeMapper;
 import com.example.engine_system.service.ResumeService;
+import com.example.engine_system.sysconst.PlaneType;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,11 +21,6 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public int updateResume(List<Resume> resume) {
-        return resumeMapper.updateList(resume);
-    }
-
-    @Override
     public List<Resume> getResumeById(Integer id, String type) {
         String[] type_s = type.split("_");
         return resumeMapper.getResumeById(id, type_s[type_s.length - 1]);
@@ -33,5 +29,22 @@ public class ResumeServiceImpl implements ResumeService {
     @Override
     public int deleteResume(Integer id) {
         return resumeMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int addResumeEngine(List<Resume> resumeList) {
+        resumeList.forEach(e->{
+            e.setReceiverStartTimes(e.getEngineStartTimes());
+            e.setReceiverSGroundFlight(e.getEngineSGroundFlight());
+            e.setReceiverSpGroundFlight(e.getEngineSpGroundFlight());
+            e.setReceiverSFlight(e.getEngineSFlight());
+            e.setReceiverSpFlight(e.getEngineSpFlight());
+            e.setReceiverSStateWork(e.getEngineSStateWork());
+            e.setReceiverYsStateWork(e.getEngineYsStateWork());
+            e.setReceiverSpStateWork(e.getEngineSpStateWork());
+            e.setReceiverSAllStateWork(e.getEngineSAllStateWork());
+            e.setReceiverSpAllStateWork(e.getEngineSpAllStateWork());
+        });
+        return resumeMapper.addResume(resumeList);
     }
 }

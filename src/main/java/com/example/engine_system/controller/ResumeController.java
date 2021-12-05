@@ -21,9 +21,9 @@ public class ResumeController {
         return resumeService.addResume(resumeList);
     }
 
-    @PutMapping("/updateResume")
-    public int updateResume(@ModelAttribute("resume") List<Resume> resume) {
-        return resumeService.updateResume(resume);
+    @PostMapping("/addResumeEngine")
+    public int addResumeEngine(@RequestBody List<Resume> resumeList) {
+        return resumeService.addResumeEngine(resumeList);
     }
 
     @GetMapping("/getResumeById/{id}/{type}")
