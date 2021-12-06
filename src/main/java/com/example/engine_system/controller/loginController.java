@@ -12,8 +12,7 @@ public class loginController {
 
     @GetMapping("/get_info")
     public User get_info() {
-        User user = new User("", "",
+        return new User("", "",
                 "https://file.iviewui.com/dist/a0e88e83800f138b94d2414621bd9704.png", "", "");
-        return user;
     }
 }

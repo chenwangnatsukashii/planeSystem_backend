@@ -12,4 +12,6 @@ public interface ResumeService {
     int deleteResume(Integer id);
 
     int addResumeEngine(List<Resume> resumeList);
+
+    int addResumeEngineB(List<Resume> resumeList);
 }

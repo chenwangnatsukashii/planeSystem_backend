@@ -20,11 +20,6 @@ public class ResumeEightController {
         return ResumeEightService.addResumeEight(resumeList);
     }
 
-    @PutMapping("/updateResumeEight")
-    public int updateResumeEight(@ModelAttribute("resume") List<ResumeEight> resume) {
-        return ResumeEightService.updateResumeEight(resume);
-    }
-
     @GetMapping("/getResumeEightById/{id}")
     public List<ResumeEight> getResumeEightById(@PathVariable("id") Integer id) {
         return ResumeEightService.getResumeEightById(id);

@@ -7,8 +7,6 @@ import java.util.List;
 public interface ResumeEightService {
     int addResumeEight(List<ResumeEight> resume);
 
-    int updateResumeEight(List<ResumeEight> resume);
-
     List<ResumeEight> getResumeEightById(Integer id);
 
     int deleteResumeEight(Integer id);

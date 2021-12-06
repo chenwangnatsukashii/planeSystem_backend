@@ -21,7 +21,5 @@ public interface ResumeNineMapper {
 
     int addResumeNine(List<ResumeNine> resume);
 
-    int updateResumeNine(List<ResumeNine> resume);
-
     List<ResumeNine> getResumeNineById(Integer id);
 }

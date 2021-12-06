@@ -1,7 +1,6 @@
 package com.example.engine_system.controller;
 
 
-import com.example.engine_system.entity.Plane;
 import com.example.engine_system.entity.Resume;
 import com.example.engine_system.service.ResumeService;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +23,11 @@ public class ResumeController {
     @PostMapping("/addResumeEngine")
     public int addResumeEngine(@RequestBody List<Resume> resumeList) {
         return resumeService.addResumeEngine(resumeList);
+    }
+
+    @PostMapping("/addResumeEngineB")
+    public int addResumeEngineB(@RequestBody List<Resume> resumeList) {
+        return resumeService.addResumeEngineB(resumeList);
     }
 
     @GetMapping("/getResumeById/{id}/{type}")

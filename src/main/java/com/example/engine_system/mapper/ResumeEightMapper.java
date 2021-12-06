@@ -21,7 +21,5 @@ public interface ResumeEightMapper {
 
     int addResumeEight(List<ResumeEight> resume);
 
-    int updateResumeEight(List<ResumeEight> resume);
-
     List<ResumeEight> getResumeEightById(Integer id);
 }
