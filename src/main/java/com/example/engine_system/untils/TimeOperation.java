@@ -6,8 +6,8 @@ package com.example.engine_system.untils;
  * @apiNote the operation of the time
  */
 public class TimeOperation {
-    private static final String semiAngleColon = ":";
-    private static final String fullAngleColon = "：";
+    public static final String semiAngleColon = ":";
+    public static final String fullAngleColon = "：";
 
     public static String addTime(String time1, String time2) {
         if (time1 == null || "".equals(time1)) {
