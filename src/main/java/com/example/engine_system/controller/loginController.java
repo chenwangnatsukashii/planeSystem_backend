@@ -10,6 +10,11 @@ public class loginController {
         return 1;
     }
 
+    @PostMapping("/logout")
+    public int logout() {
+        return 1;
+    }
+
     @GetMapping("/get_info")
     public User get_info() {
         return new User("", "",
