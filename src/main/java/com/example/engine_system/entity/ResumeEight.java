@@ -1,5 +1,7 @@
 package com.example.engine_system.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class ResumeEight {
@@ -7,6 +9,7 @@ public class ResumeEight {
 
     private Integer planeId;
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date eightDate;
 
     private Integer todayStartTimes;

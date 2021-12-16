@@ -21,19 +21,18 @@ public class WarningInfo {
     public static final String RECEIVER = "外置机匣";
     public static final String STARTER = "起动机";
     public static final String REGULATOR = "调节器";
-    public static final String SYSM = "剩余寿命少于10小时";
-    public static final String SPS = "Б＋УБ状态加力剩余寿命少于2小时";
-    public static final String S = "Б状态加力剩余寿命少于2小时";
-    public static final String QDSY = "起动剩余寿命少于50次";
-    public static final String SPSZX = "Б＋УБ主循环次数已累计到450次";
-    public static final String SPZX = "Б主循环次数已累计到100次";
-    public static final String SYRL = "剩余日历寿命少于6个月";
-    public static final String ZZZT = "作战状态剩余寿命少于10小时";
-    public static final String ZJYS = "中间以上状态剩余寿命少于2小时";
-    public static final String ZZZJ = "作战中间以上状态剩余寿命少于2小时";
-    public static final String SYGZ = "剩余工作时间少于10小时";
-    public static final String YSYZ = "已使用总寿命超过290小时";
-
+    public static final String SYSM = "剩余寿命少于" + TEN + "小时";
+    public static final String SPS = "Б＋УБ状态加力剩余寿命少于" + TWO + "小时";
+    public static final String S = "Б状态加力剩余寿命少于" + TWO + "小时";
+    public static final String QDSY = "起动剩余寿命少于" + FIFTY + "次";
+    public static final String SPSZX = "Б＋УБ主循环次数已累计到" + FHF + "次";
+    public static final String SPZX = "Б主循环次数已累计到" + HUNDRED + "次";
+    public static final String SYRL = "剩余日历寿命少于" + SIX + "个月";
+    public static final String ZZZT = "作战状态剩余寿命少于" + TEN + "小时";
+    public static final String ZJYS = "中间以上状态剩余寿命少于" + TWO + "小时";
+    public static final String ZZZJ = "作战中间以上状态剩余寿命少于" + TWO + "小时";
+    public static final String SYGZ = "剩余工作时间少于" + TEN + "小时";
+    public static final String YSYZ = "已使用总寿命超过" + THN + "小时";
 
 
 }

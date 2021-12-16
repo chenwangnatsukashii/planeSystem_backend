@@ -1,10 +1,14 @@
 package com.example.engine_system.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class ResumeNine {
     private Integer id;
     private Integer planeId;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date nineDate;
     private Integer groundAllHour;
     private Integer groundAllMinute;

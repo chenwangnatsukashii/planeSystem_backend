@@ -1,5 +1,7 @@
 package com.example.engine_system.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -12,14 +14,20 @@ public class Plane {
     private String planeNoseNum;
     private String factory;
     private String atUnitNum;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date manufacturingDate;
     private String verticalTailNum;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date intoFactoryDate;
     private String sendUnit;
     private String insititute;
     private String garrison;
     private String beginningTime;
     private String lastRefurbishmentTime;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date repairDate;
     private Integer flightHours;
     private String specifiedLife;
@@ -42,7 +50,11 @@ public class Plane {
     private String engineRightTotalWorkHours;
     private String engineLeftLastRepairTime;
     private String engineRightLastRepairTime;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date engineLeftExpirationDate;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date engineRightExpirationDate;
     private String engineLeftOperationalHours;
     private String engineRightOperationalHours;
@@ -74,17 +86,28 @@ public class Plane {
     private String engineRightOverhaulFactory;
     private String engineLeftRepairMakeFactory;
     private String engineRightRepairMakeFactory;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date engineLeftLastDeliveryDate;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date engineRightLastDeliveryDate;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date engineLeftManufacturingData;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date engineRightManufacturingData;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date engineLeftNine;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date engineRightNine;
     private String engineLeftOilNum;
     private String engineRightOilNum;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date engineLeftOilSealDate;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date engineRightOilSealDate;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date engineLeftOilSealDeadline;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date engineRightOilSealDeadline;
     private String engineLeftFlawDetection;
     private String engineRightFlawDetection;
@@ -108,11 +131,17 @@ public class Plane {
     private String receiverRightStateResidualLife;
     private Integer receiverLeftStartingRemainingLife;
     private Integer receiverRightStartingRemainingLife;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date receiverLeftExpirationDate;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date receiverRightExpirationDate;
     private String receiverLeftManufacturingFactory;
     private String receiverRightManufacturingFactory;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date receiverLeftManufacturingDate;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date receiverRightManufacturingDate;
     private String receiverLeftSpecifiedLife;
     private String receiverRightSpecifiedLife;
@@ -120,9 +149,14 @@ public class Plane {
     private Integer receiverRightRepairedTimes;
     private String receiverLeftOverhaulFactory;
     private String receiverRightOverhaulFactory;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date receiverLeftLastDeliveryDate;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date receiverRightLastDeliveryDate;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date receiverLeftManufactureDate;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date receiverRightManufactureDate;
     private String starterLeftNum;
     private String starterRightNum;
@@ -136,7 +170,10 @@ public class Plane {
     private String starterRightRemainingTime;
     private Integer starterLeftTotalServiceLife;
     private Integer starterRightTotalServiceLife;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date starterLeftExpirationDate;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date starterRightExpirationDate;
     private Integer starterLeftRepairedTimes;
     private Integer starterRightRepairedTimes;
@@ -144,9 +181,14 @@ public class Plane {
     private String starterRightManufacturingFactory;
     private String starterLeftOverhaulFactory;
     private String starterRightOverhaulFactory;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date starterLeftLastDeliveryDate;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date starterRightLastDeliveryDate;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date starterLeftManufactureDate;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date starterRightManufactureDate;
     private String regulatorLeftNum;
     private String regulatorRightNum;
@@ -162,6 +204,8 @@ public class Plane {
     private String airGeneratorRepairedTimes;
     private Integer airGeneratorSpecifiedStartingTimes;
     private String airGeneratorOverhaulFactory;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date airGeneratorManufactureDate;
     private Integer airGeneratorRemainingTimes;
     private Integer airGeneratorRepairTimes;
