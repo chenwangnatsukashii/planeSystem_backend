@@ -136,12 +136,12 @@ public class PlaneServiceImpl implements PlaneService {
 
 //            起动剩余寿命50次
                 if (!SomeOperation.isEmpty(plane.getStarterLeftResidualLife())) {
-                    if (plane.getStarterLeftResidualLife() <= WarningInfo.FIFTY) {
+                    if (plane.getStarterLeftResidualLife() < WarningInfo.FIFTY) {
                         warningInfo.add(WarningInfo.LEFT + WarningInfo.STARTER + WarningInfo.QDSY);
                     }
                 }
                 if (!SomeOperation.isEmpty(plane.getStarterRightResidualLife())) {
-                    if (plane.getStarterRightResidualLife() <= WarningInfo.FIFTY) {
+                    if (plane.getStarterRightResidualLife() < WarningInfo.FIFTY) {
                         warningInfo.add(WarningInfo.RIGHT + WarningInfo.STARTER + WarningInfo.QDSY);
                     }
                 }
@@ -251,6 +251,84 @@ public class PlaneServiceImpl implements PlaneService {
                         warningInfo.add(WarningInfo.RIGHT + WarningInfo.ENGINE + WarningInfo.SYSM);
                     }
                 }
+
+//                外置机匣
+//                剩余工作时间少于10小时
+                if (!SomeOperation.isEmpty(plane.getReceiverLeftRemainingTime())) {
+                    String[] split = plane.getReceiverLeftRemainingTime().contains(TimeOperation.semiAngleColon) ?
+                            plane.getReceiverLeftRemainingTime().split(TimeOperation.semiAngleColon) :
+                            plane.getReceiverLeftRemainingTime().split(TimeOperation.fullAngleColon);
+                    if (Integer.parseInt(split[0]) < WarningInfo.TEN) {
+                        warningInfo.add(WarningInfo.LEFT + WarningInfo.RECEIVER + WarningInfo.SYGZ);
+                    }
+                }
+                if (!SomeOperation.isEmpty(plane.getReceiverRightRemainingTime())) {
+                    String[] split = plane.getReceiverRightRemainingTime().contains(TimeOperation.semiAngleColon) ?
+                            plane.getReceiverRightRemainingTime().split(TimeOperation.semiAngleColon) :
+                            plane.getReceiverRightRemainingTime().split(TimeOperation.fullAngleColon);
+                    if (Integer.parseInt(split[0]) < WarningInfo.TEN) {
+                        warningInfo.add(WarningInfo.RIGHT + WarningInfo.RECEIVER + WarningInfo.SYGZ);
+                    }
+                }
+
+//            起动剩余寿命50次
+                if (!SomeOperation.isEmpty(plane.getStarterLeftResidualLife())) {
+                    if (plane.getStarterLeftResidualLife() < WarningInfo.FIFTY) {
+                        warningInfo.add(WarningInfo.LEFT + WarningInfo.STARTER + WarningInfo.QDSY);
+                    }
+                }
+                if (!SomeOperation.isEmpty(plane.getStarterRightResidualLife())) {
+                    if (plane.getStarterRightResidualLife() < WarningInfo.FIFTY) {
+                        warningInfo.add(WarningInfo.RIGHT + WarningInfo.STARTER + WarningInfo.QDSY);
+                    }
+                }
+
+//                剩余寿命少于10小时
+                if (!SomeOperation.isEmpty(plane.getRegulatorLeftResidualLife())) {
+                    String[] split = plane.getRegulatorLeftResidualLife().contains(TimeOperation.semiAngleColon) ?
+                            plane.getRegulatorLeftResidualLife().split(TimeOperation.semiAngleColon) :
+                            plane.getRegulatorLeftResidualLife().split(TimeOperation.fullAngleColon);
+                    if (Integer.parseInt(split[0]) < WarningInfo.TEN) {
+                        warningInfo.add(WarningInfo.LEFT + WarningInfo.REGULATOR + WarningInfo.SYSM);
+                    }
+                }
+                if (!SomeOperation.isEmpty(plane.getRegulatorRightResidualLife())) {
+                    String[] split = plane.getRegulatorRightResidualLife().contains(TimeOperation.semiAngleColon) ?
+                            plane.getRegulatorRightResidualLife().split(TimeOperation.semiAngleColon) :
+                            plane.getRegulatorRightResidualLife().split(TimeOperation.fullAngleColon);
+                    if (Integer.parseInt(split[0]) < WarningInfo.TEN) {
+                        warningInfo.add(WarningInfo.RIGHT + WarningInfo.REGULATOR + WarningInfo.SYSM);
+                    }
+                }
+
+            }else if (plane.getPlaneType().equals(PlaneType.PLANE_TYPE_3.getcName())){
+
+//                已使用总寿命超过290小时
+                if (!SomeOperation.isEmpty(plane.getEngineLeftTotalServiceLife())) {
+                    String[] split = plane.getEngineLeftTotalServiceLife().contains(TimeOperation.semiAngleColon) ?
+                            plane.getEngineLeftTotalServiceLife().split(TimeOperation.semiAngleColon) :
+                            plane.getEngineLeftTotalServiceLife().split(TimeOperation.fullAngleColon);
+                    if (Integer.parseInt(split[0]) > WarningInfo.THN) {
+                        warningInfo.add(WarningInfo.REGULATOR + WarningInfo.YSYZ);
+                    }
+                }
+
+            }else if (plane.getPlaneType().equals(PlaneType.PLANE_TYPE_4.getcName())){
+//                剩余日历寿命少于6个月
+                if ("0".equals(String.valueOf(plane.getEngineLeftRemainingTime().charAt(0))) &&
+                        (Integer.parseInt(String.valueOf(plane.getRegulatorLeftRemainingTime().charAt(2))) < WarningInfo.SIX)) {
+                    warningInfo.add(WarningInfo.ENGINE + WarningInfo.SYRL);
+                }
+//                剩余寿命少于10小时
+                if (!SomeOperation.isEmpty(plane.getEngineLeftResidualLife())) {
+                    String[] split = plane.getEngineLeftResidualLife().contains(TimeOperation.semiAngleColon) ?
+                            plane.getEngineLeftResidualLife().split(TimeOperation.semiAngleColon) :
+                            plane.getEngineLeftResidualLife().split(TimeOperation.fullAngleColon);
+                    if (Integer.parseInt(split[0]) < WarningInfo.TEN) {
+                        warningInfo.add(WarningInfo.REGULATOR + WarningInfo.SYSM);
+                    }
+                }
+
             }
 
 
