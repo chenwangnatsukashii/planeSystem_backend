@@ -10,4 +10,6 @@ public interface PlaneService {
     Plane findPlaneById(Integer id);
 
     int updatePlane(Plane plane);
+
+    void addPlane(List<Plane> planes);
 }

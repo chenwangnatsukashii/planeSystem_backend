@@ -235,6 +235,58 @@
     order by id desc
   </select>
 
+  <insert id="addPlane" parameterType="java.util.ArrayList">
+    insert into plane ( <include refid="Base_Column_List" />) values
+    <foreach collection="list" index="index" separator="," item="item">
+      (#{item.id,jdbcType=INTEGER}, #{item.type,jdbcType=VARCHAR}, #{item.planeId,jdbcType=INTEGER}, #{item.engineDate,jdbcType=DATE},
+      #{item.engineStartTimes,jdbcType=INTEGER}, #{item.engineSGroundFlight,jdbcType=VARCHAR},
+      #{item.engineSpGroundFlight,jdbcType=VARCHAR}, #{item.engineSFlight,jdbcType=VARCHAR}, #{item.engineSpFlight,jdbcType=VARCHAR},
+      #{item.engineSStateWork,jdbcType=VARCHAR}, #{item.engineYsStateWork,jdbcType=VARCHAR}, #{item.engineSpStateWork,jdbcType=VARCHAR},
+      #{item.engineSAllStateWork,jdbcType=VARCHAR}, #{item.engineSpAllStateWork,jdbcType=VARCHAR},
+      #{item.engineSMainCycle,jdbcType=INTEGER}, #{item.engineSpMainCycle,jdbcType=INTEGER}, #{item.receiverDate,jdbcType=DATE},
+      #{item.receiverStartTimes,jdbcType=INTEGER}, #{item.receiverSGroundFlight,jdbcType=VARCHAR},
+      #{item.receiverSpGroundFlight,jdbcType=VARCHAR}, #{item.receiverSFlight,jdbcType=VARCHAR},
+      #{item.receiverSpFlight,jdbcType=VARCHAR}, #{item.receiverSStateWork,jdbcType=VARCHAR}, #{item.receiverYsStateWork,jdbcType=VARCHAR},
+      #{item.receiverSpStateWork,jdbcType=VARCHAR}, #{item.receiverSAllStateWork,jdbcType=VARCHAR},
+      #{item.receiverSpAllStateWork,jdbcType=VARCHAR}, #{item.sEngineDate,jdbcType=DATE}, #{item.sEngineStartTimes,jdbcType=INTEGER},
+      #{item.sEngineLastRepair,jdbcType=INTEGER}, #{item.sEngineLastOilSealRepair,jdbcType=INTEGER},
+      #{item.sEngineAllStart,jdbcType=INTEGER}, #{item.sEngineAllOilSeal,jdbcType=INTEGER})
+    </foreach>
+    ON DUPLICATE KEY UPDATE
+    type = values(type),
+    plane_id = values(plane_id),
+    engine_date = values(engine_date),
+    engine_start_times = values(engine_start_times),
+    engine_s_ground_flight = values(engine_s_ground_flight),
+    engine_sp_ground_flight = values(engine_sp_ground_flight),
+    engine_s_flight = values(engine_s_flight),
+    engine_sp_flight = values(engine_sp_flight),
+    engine_s_state_work = values(engine_s_state_work),
+    engine_ys_state_work = values(engine_ys_state_work),
+    engine_sp_state_work = values(engine_sp_state_work),
+    engine_s_all_state_work = values(engine_s_all_state_work),
+    engine_sp_all_state_work = values(engine_sp_all_state_work),
+    engine_s_main_cycle = values(engine_s_main_cycle),
+    engine_sp_main_cycle = values(engine_sp_main_cycle),
+    receiver_date = values(receiver_date),
+    receiver_start_times = values(receiver_start_times),
+    receiver_s_ground_flight = values(receiver_s_ground_flight),
+    receiver_sp_ground_flight = values(receiver_sp_ground_flight),
+    receiver_s_flight = values(receiver_s_flight),
+    receiver_sp_flight = values(receiver_sp_flight),
+    receiver_s_state_work = values(receiver_s_state_work),
+    receiver_ys_state_work = values(receiver_ys_state_work),
+    receiver_sp_state_work = values(receiver_sp_state_work),
+    receiver_s_all_state_work = values(receiver_s_all_state_work),
+    receiver_sp_all_state_work = values(receiver_sp_all_state_work),
+    s_engine_date = values(s_engine_date),
+    s_engine_start_times = values(s_engine_start_times),
+    s_engine_last_repair = values(s_engine_last_repair),
+    s_engine_last_oil_seal_repair = values(s_engine_last_oil_seal_repair),
+    s_engine_all_start = values(s_engine_all_start),
+    s_engine_all_oil_seal = values(s_engine_all_oil_seal)
+  </insert>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

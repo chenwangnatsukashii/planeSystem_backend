@@ -301,7 +301,7 @@ public class PlaneServiceImpl implements PlaneService {
                     }
                 }
 
-            }else if (plane.getPlaneType().equals(PlaneType.PLANE_TYPE_3.getcName())){
+            } else if (plane.getPlaneType().equals(PlaneType.PLANE_TYPE_3.getcName())) {
 
 //                已使用总寿命超过290小时
                 if (!SomeOperation.isEmpty(plane.getEngineLeftTotalServiceLife())) {
@@ -313,7 +313,7 @@ public class PlaneServiceImpl implements PlaneService {
                     }
                 }
 
-            }else if (plane.getPlaneType().equals(PlaneType.PLANE_TYPE_4.getcName())){
+            } else if (plane.getPlaneType().equals(PlaneType.PLANE_TYPE_4.getcName())) {
 //                剩余日历寿命少于6个月
                 if ("0".equals(String.valueOf(plane.getEngineLeftRemainingTime().charAt(0))) &&
                         (Integer.parseInt(String.valueOf(plane.getRegulatorLeftRemainingTime().charAt(2))) < WarningInfo.SIX)) {
@@ -345,5 +345,10 @@ public class PlaneServiceImpl implements PlaneService {
     @Override
     public int updatePlane(Plane plane) {
         return planeMapper.updateByPrimaryKey(plane);
+    }
+
+    @Override
+    public void addPlane(List<Plane> planes) {
+        planeMapper.addPlane(planes);
     }
 }

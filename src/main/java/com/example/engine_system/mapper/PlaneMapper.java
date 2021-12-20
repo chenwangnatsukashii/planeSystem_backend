@@ -21,4 +21,6 @@ public interface PlaneMapper {
     int updateByPrimaryKey(Plane record);
 
     List<Plane> getAllPlanes(@Param("work_number") String workNumber, @Param("plane_type") String planeType, @Param("unit_number") String unitNumber, @Param("plane_num") String planeNum);
+
+    void addPlane(List<Plane> planes);
 }
