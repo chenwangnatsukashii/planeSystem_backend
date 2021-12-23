@@ -315,10 +315,13 @@ public class PlaneServiceImpl implements PlaneService {
 
             } else if (plane.getPlaneType().equals(PlaneType.PLANE_TYPE_4.getcName())) {
 //                剩余日历寿命少于6个月
-                if ("0".equals(String.valueOf(plane.getEngineLeftRemainingTime().charAt(0))) &&
-                        (Integer.parseInt(String.valueOf(plane.getRegulatorLeftRemainingTime().charAt(2))) < WarningInfo.SIX)) {
-                    warningInfo.add(WarningInfo.ENGINE + WarningInfo.SYRL);
+                if (!SomeOperation.isEmpty(plane.getEngineLeftRemainingTime())) {
+                    if ("0".equals(String.valueOf(plane.getEngineLeftRemainingTime().charAt(0))) &&
+                            (Integer.parseInt(String.valueOf(plane.getRegulatorLeftRemainingTime().charAt(2))) < WarningInfo.SIX)) {
+                        warningInfo.add(WarningInfo.ENGINE + WarningInfo.SYRL);
+                    }
                 }
+
 //                剩余寿命少于10小时
                 if (!SomeOperation.isEmpty(plane.getEngineLeftResidualLife())) {
                     String[] split = plane.getEngineLeftResidualLife().contains(TimeOperation.semiAngleColon) ?
