@@ -44,4 +44,9 @@ public class PlaneController {
     public int updatePlane(@ModelAttribute("plane") Plane plane) {
         return planeService.updatePlane(plane);
     }
+
+    @DeleteMapping("/deleteAnyPlane/{id}")
+    public int deleteAnyPlane(@PathVariable("id") Integer id) {
+        return planeMapper.deleteByPrimaryKey(id);
+    }
 }
