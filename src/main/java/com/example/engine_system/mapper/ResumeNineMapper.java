@@ -2,10 +2,12 @@ package com.example.engine_system.mapper;
 
 import com.example.engine_system.entity.ResumeNine;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
+@Repository
 public interface ResumeNineMapper {
     int deleteByPrimaryKey(Integer id);
 
