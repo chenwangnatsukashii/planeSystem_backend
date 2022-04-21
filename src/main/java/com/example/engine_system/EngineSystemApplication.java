@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableScheduling
 @SpringBootApplication
+// 有mapper包扫描就可以不用写@Mapper
 @MapperScan(basePackages = "com.example.engine_system.mapper")
 public class EngineSystemApplication {
 
