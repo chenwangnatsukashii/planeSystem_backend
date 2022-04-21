@@ -4,8 +4,8 @@ public enum PlaneType {
     PLANE_TYPE_1("J11", "歼-11"), PLANE_TYPE_2("J11B", "歼-11B"),
     PLANE_TYPE_3("JJ9", "歼教-9"), PLANE_TYPE_4("J8", "教-8");
 
-    private String eName;
-    private String cName;
+    private final String eName;
+    private final String cName;
 
     public static String getName(String eName) {
         for (PlaneType c : PlaneType.values()) {
@@ -25,15 +25,8 @@ public enum PlaneType {
         return eName;
     }
 
-    public void seteName(String eName) {
-        this.eName = eName;
-    }
-
     public String getcName() {
         return cName;
     }
 
-    public void setcName(String cName) {
-        this.cName = cName;
-    }
 }
