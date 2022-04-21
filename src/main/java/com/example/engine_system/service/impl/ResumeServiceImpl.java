@@ -36,6 +36,53 @@ public class ResumeServiceImpl implements ResumeService {
 
     @Override
     public int deleteResume(Integer id) {
+        Resume e = resumeMapper.selectByPrimaryKey(id);
+        Plane plane = planeMapper.selectByPrimaryKey(e.getPlaneId());
+
+        if (e.getType().equals("left")) {
+            // 对左发动机的数据更新
+            plane.setEngineLeftTotalServiceLife(TimeOperation.minusTime(plane.getEngineLeftTotalServiceLife(), e.getEngineSpAllStateWork()));
+            plane.setEngineLeftResidualLife(TimeOperation.addTime(plane.getEngineLeftResidualLife(), e.getEngineSpAllStateWork()));
+            plane.setEngineLeftSpStateResidualLife(TimeOperation.addTimeHMS(plane.getEngineLeftSpStateResidualLife(), e.getEngineSpStateWork()));
+            plane.setEngineLeftSStateResidualLife(TimeOperation.addTimeHMS(plane.getEngineLeftSStateResidualLife(), e.getEngineSStateWork()));
+            plane.setEngineLeftStartingRemainingLife(NumberOperation.addNumber(plane.getEngineLeftStartingRemainingLife(), e.getEngineStartTimes()));
+            plane.setEngineLeftSpMajorCycles(NumberOperation.minusNumber(plane.getEngineLeftSpMajorCycles(), e.getEngineSpMainCycle()));
+            plane.setEngineLeftSMajorCycles(NumberOperation.minusNumber(plane.getEngineLeftSMajorCycles(), e.getEngineSMainCycle()));
+            // 对左机匣的数据更新
+            plane.setReceiverLeftTotalServiceLife(TimeOperation.minusTime(plane.getReceiverLeftTotalServiceLife(), e.getEngineSpAllStateWork()));
+            plane.setReceiverLeftResidualLife(TimeOperation.addTime(plane.getEngineLeftResidualLife(), e.getEngineSpAllStateWork()));
+            plane.setReceiverLeftSpStateResidualLife(TimeOperation.addTimeHMS(plane.getReceiverLeftSpStateResidualLife(), e.getEngineSpStateWork()));
+            plane.setReceiverLeftStateResidualLife(TimeOperation.addTimeHMS(plane.getReceiverLeftStateResidualLife(), e.getEngineSStateWork()));
+            plane.setReceiverLeftStartingRemainingLife(NumberOperation.addNumber(plane.getReceiverLeftStartingRemainingLife(), e.getEngineStartTimes()));
+            // 对左起动机的数据更新
+            plane.setStarterLeftTotalServiceLife(NumberOperation.minusNumber(plane.getStarterLeftTotalServiceLife(), e.getEngineStartTimes()));
+            plane.setStarterLeftResidualLife(NumberOperation.addNumber(plane.getStarterLeftResidualLife(), e.getEngineStartTimes()));
+            // 对左综合调节器的数据更新
+            plane.setRegulatorLeftResidualLife(TimeOperation.addTime(plane.getRegulatorLeftResidualLife(), e.getEngineSpAllStateWork()));
+
+        } else {
+            // 对右发动机的数据更新
+            plane.setEngineRightTotalServiceLife(TimeOperation.minusTime(plane.getEngineRightTotalServiceLife(), e.getEngineSpAllStateWork()));
+            plane.setEngineRightResidualLife(TimeOperation.addTime(plane.getEngineRightResidualLife(), e.getEngineSpAllStateWork()));
+            plane.setEngineRightSpStateResidualLife(TimeOperation.addTimeHMS(plane.getEngineRightSpStateResidualLife(), e.getEngineSpStateWork()));
+            plane.setEngineRightSStateResidualLife(TimeOperation.addTimeHMS(plane.getEngineRightSStateResidualLife(), e.getEngineSStateWork()));
+            plane.setEngineRightStartingRemainingLife(NumberOperation.addNumber(plane.getEngineRightStartingRemainingLife(), e.getEngineStartTimes()));
+            plane.setEngineRightSpMajorCycles(NumberOperation.minusNumber(plane.getEngineLeftSpMajorCycles(), e.getEngineSpMainCycle()));
+            plane.setEngineRightSMajorCycles(NumberOperation.minusNumber(plane.getEngineLeftSMajorCycles(), e.getEngineSMainCycle()));
+            // 对右机匣的数据更新
+            plane.setReceiverRightTotalServiceLife(TimeOperation.minusTime(plane.getReceiverRightTotalServiceLife(), e.getEngineSpAllStateWork()));
+            plane.setReceiverRightResidualLife(TimeOperation.addTime(plane.getEngineRightResidualLife(), e.getEngineSpAllStateWork()));
+            plane.setReceiverRightSpStateResidualLife(TimeOperation.addTimeHMS(plane.getReceiverRightSpStateResidualLife(), e.getEngineSpStateWork()));
+            plane.setReceiverRightStateResidualLife(TimeOperation.addTimeHMS(plane.getReceiverRightStateResidualLife(), e.getEngineSStateWork()));
+            plane.setReceiverRightStartingRemainingLife(NumberOperation.addNumber(plane.getReceiverRightStartingRemainingLife(), e.getEngineStartTimes()));
+            // 对右起动机的数据更新
+            plane.setStarterRightTotalServiceLife(NumberOperation.minusNumber(plane.getStarterRightTotalServiceLife(), e.getEngineStartTimes()));
+            plane.setStarterRightResidualLife(NumberOperation.addNumber(plane.getStarterRightResidualLife(), e.getEngineStartTimes()));
+            // 对左综合调节器的数据更新
+            plane.setRegulatorRightResidualLife(TimeOperation.addTime(plane.getRegulatorRightResidualLife(), e.getEngineSpAllStateWork()));
+        }
+        planeMapper.updateByPrimaryKey(plane);
+
         return resumeMapper.deleteByPrimaryKey(id);
     }
 
@@ -54,8 +101,8 @@ public class ResumeServiceImpl implements ResumeService {
             e.setReceiverSAllStateWork(e.getEngineSAllStateWork());
             e.setReceiverSpAllStateWork(e.getEngineSpAllStateWork());
 
-            e.setsEngineDate(e.getEngineDate());
-            e.setsEngineStartTimes(e.getEngineStartTimes());
+            e.setSEngineDate(e.getEngineDate());
+            e.setSEngineStartTimes(e.getEngineStartTimes());
             if (ObjectUtils.isEmpty(e.getId())) {
                 Plane plane = planeMapper.selectByPrimaryKey(e.getPlaneId());
                 if (e.getType().equals("left")) {
@@ -135,7 +182,7 @@ public class ResumeServiceImpl implements ResumeService {
 
                     // 对左综合调节器的数据更新
                     plane.setRegulatorLeftResidualLife(TimeOperation.minusTime(plane.getRegulatorLeftResidualLife(), e.getEngineSpAllStateWork()));
-                } else{
+                } else {
                     // 对右发动机的数据更新
                     plane.setEngineRightTotalWorkHours(TimeOperation.addTime(plane.getEngineRightTotalWorkHours(), e.getEngineSpAllStateWork()));
                     plane.setEngineRightLastRepairTime(TimeOperation.addTime(plane.getEngineRightLastRepairTime(), e.getEngineSpAllStateWork()));

@@ -8,12 +8,14 @@ import com.example.engine_system.sysconst.WarningInfo;
 import com.example.engine_system.untils.SomeOperation;
 import com.example.engine_system.untils.TimeOperation;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class PlaneServiceImpl implements PlaneService {
 
     @Resource
