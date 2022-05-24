@@ -10,7 +10,6 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    url: jdbc:mysql://119.3.191.100:3306/engine_system?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     #Spring Boot 默认是不注入这些属性值的，需要自己绑定
@@ -34,6 +33,10 @@ spring:
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
 
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/java #重启目录
 
 ---
 # 生产环境
