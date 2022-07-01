@@ -6,10 +6,10 @@ mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
 
 spring:
-  config:
-    activate:
-      on-profile: dev
   datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/engine_system?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     #Spring Boot 默认是不注入这些属性值的，需要自己绑定
@@ -38,28 +38,7 @@ spring:
       enabled: true  #设置开启热部署
       additional-paths: src/main/java #重启目录
 
----
-# 生产环境
-spring:
-  config:
-    activate:
-      on-profile: pro
-  datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://119.3.191.100:3306/engine_system?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
 
-
----
-# 开发环境
-spring:
-  config:
-    activate:
-      on-profile: dev
-  datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3306/engine_system?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
 
 
 
