@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.engine_system.mapper.ResumeEightMapper">
+  <resultMap id="BaseResultMap" type="com.example.engine_system.entity.ResumeEight">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="plane_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="eight_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="today_start_times" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ground_fly" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ground_rated" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ground_total" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="air_fly" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="air_rated" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="air_total" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ground_air_fly" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ground_air_rated" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ground_air_total" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="total_fly" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="total_rated" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="total_total" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="total_start_times" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, plane_id, eight_date, today_start_times, ground_fly, ground_rated, ground_total, 
+    air_fly, air_rated, air_total, ground_air_fly, ground_air_rated, ground_air_total, 
+    total_fly, total_rated, total_total, total_start_times
+  </sql>
+
+  <select id="getResumeEightById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from resume_eight where plane_id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <insert id="addResumeEight" parameterType="java.util.ArrayList">
+    insert into resume_eight (id, plane_id, eight_date, today_start_times, ground_fly, ground_rated, ground_total,
+    air_fly, air_rated, air_total, ground_air_fly, ground_air_rated, ground_air_total,
+    total_fly, total_rated, total_total, total_start_times) values
+    <foreach collection="list" index="index" separator="," item="item">
+      (#{item.id,jdbcType=INTEGER}, #{item.planeId,jdbcType=INTEGER}, #{item.eightDate,jdbcType=DATE},
+      #{item.todayStartTimes,jdbcType=INTEGER}, #{item.groundFly,jdbcType=VARCHAR}, #{item.groundRated,jdbcType=VARCHAR},
+      #{item.groundTotal,jdbcType=VARCHAR}, #{item.airFly,jdbcType=VARCHAR}, #{item.airRated,jdbcType=VARCHAR},
+      #{item.airTotal,jdbcType=VARCHAR}, #{item.groundAirFly,jdbcType=VARCHAR}, #{item.groundAirRated,jdbcType=VARCHAR},
+      #{item.groundAirTotal,jdbcType=VARCHAR}, #{item.totalFly,jdbcType=VARCHAR}, #{item.totalRated,jdbcType=VARCHAR},
+      #{item.totalTotal,jdbcType=VARCHAR}, #{item.totalStartTimes,jdbcType=INTEGER})
+    </foreach>
+    ON DUPLICATE KEY UPDATE
+    plane_id = values(plane_id),
+    eight_date = values(eight_date),
+    today_start_times = values(today_start_times),
+    ground_fly = values(ground_fly),
+    ground_rated = values(ground_rated),
+    ground_total = values(ground_total),
+    air_fly = values(air_fly),
+    air_rated = values(air_rated),
+    air_total = values(air_total),
+    ground_air_fly = values(ground_air_fly),
+    ground_air_rated = values(ground_air_rated),
+    ground_air_total = values(ground_air_total),
+    total_fly = values(total_fly),
+    total_rated = values(total_rated),
+    total_total = values(total_total),
+    total_start_times = values(total_start_times)
+  </insert>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from resume_eight
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from resume_eight
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.engine_system.entity.ResumeEight">
+    insert into resume_eight (id, plane_id, eight_date, 
+      today_start_times, ground_fly, ground_rated, 
+      ground_total, air_fly, air_rated, 
+      air_total, ground_air_fly, ground_air_rated, 
+      ground_air_total, total_fly, total_rated, 
+      total_total, total_start_times)
+    values (#{id,jdbcType=INTEGER}, #{planeId,jdbcType=INTEGER}, #{eightDate,jdbcType=DATE}, 
+      #{todayStartTimes,jdbcType=INTEGER}, #{groundFly,jdbcType=VARCHAR}, #{groundRated,jdbcType=VARCHAR}, 
+      #{groundTotal,jdbcType=VARCHAR}, #{airFly,jdbcType=VARCHAR}, #{airRated,jdbcType=VARCHAR}, 
+      #{airTotal,jdbcType=VARCHAR}, #{groundAirFly,jdbcType=VARCHAR}, #{groundAirRated,jdbcType=VARCHAR}, 
+      #{groundAirTotal,jdbcType=VARCHAR}, #{totalFly,jdbcType=VARCHAR}, #{totalRated,jdbcType=VARCHAR}, 
+      #{totalTotal,jdbcType=VARCHAR}, #{totalStartTimes,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.engine_system.entity.ResumeEight">
+    insert into resume_eight
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="planeId != null">
+        plane_id,
+      </if>
+      <if test="eightDate != null">
+        eight_date,
+      </if>
+      <if test="todayStartTimes != null">
+        today_start_times,
+      </if>
+      <if test="groundFly != null">
+        ground_fly,
+      </if>
+      <if test="groundRated != null">
+        ground_rated,
+      </if>
+      <if test="groundTotal != null">
+        ground_total,
+      </if>
+      <if test="airFly != null">
+        air_fly,
+      </if>
+      <if test="airRated != null">
+        air_rated,
+      </if>
+      <if test="airTotal != null">
+        air_total,
+      </if>
+      <if test="groundAirFly != null">
+        ground_air_fly,
+      </if>
+      <if test="groundAirRated != null">
+        ground_air_rated,
+      </if>
+      <if test="groundAirTotal != null">
+        ground_air_total,
+      </if>
+      <if test="totalFly != null">
+        total_fly,
+      </if>
+      <if test="totalRated != null">
+        total_rated,
+      </if>
+      <if test="totalTotal != null">
+        total_total,
+      </if>
+      <if test="totalStartTimes != null">
+        total_start_times,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="planeId != null">
+        #{planeId,jdbcType=INTEGER},
+      </if>
+      <if test="eightDate != null">
+        #{eightDate,jdbcType=DATE},
+      </if>
+      <if test="todayStartTimes != null">
+        #{todayStartTimes,jdbcType=INTEGER},
+      </if>
+      <if test="groundFly != null">
+        #{groundFly,jdbcType=VARCHAR},
+      </if>
+      <if test="groundRated != null">
+        #{groundRated,jdbcType=VARCHAR},
+      </if>
+      <if test="groundTotal != null">
+        #{groundTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="airFly != null">
+        #{airFly,jdbcType=VARCHAR},
+      </if>
+      <if test="airRated != null">
+        #{airRated,jdbcType=VARCHAR},
+      </if>
+      <if test="airTotal != null">
+        #{airTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="groundAirFly != null">
+        #{groundAirFly,jdbcType=VARCHAR},
+      </if>
+      <if test="groundAirRated != null">
+        #{groundAirRated,jdbcType=VARCHAR},
+      </if>
+      <if test="groundAirTotal != null">
+        #{groundAirTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFly != null">
+        #{totalFly,jdbcType=VARCHAR},
+      </if>
+      <if test="totalRated != null">
+        #{totalRated,jdbcType=VARCHAR},
+      </if>
+      <if test="totalTotal != null">
+        #{totalTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="totalStartTimes != null">
+        #{totalStartTimes,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.engine_system.entity.ResumeEight">
+    update resume_eight
+    <set>
+      <if test="planeId != null">
+        plane_id = #{planeId,jdbcType=INTEGER},
+      </if>
+      <if test="eightDate != null">
+        eight_date = #{eightDate,jdbcType=DATE},
+      </if>
+      <if test="todayStartTimes != null">
+        today_start_times = #{todayStartTimes,jdbcType=INTEGER},
+      </if>
+      <if test="groundFly != null">
+        ground_fly = #{groundFly,jdbcType=VARCHAR},
+      </if>
+      <if test="groundRated != null">
+        ground_rated = #{groundRated,jdbcType=VARCHAR},
+      </if>
+      <if test="groundTotal != null">
+        ground_total = #{groundTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="airFly != null">
+        air_fly = #{airFly,jdbcType=VARCHAR},
+      </if>
+      <if test="airRated != null">
+        air_rated = #{airRated,jdbcType=VARCHAR},
+      </if>
+      <if test="airTotal != null">
+        air_total = #{airTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="groundAirFly != null">
+        ground_air_fly = #{groundAirFly,jdbcType=VARCHAR},
+      </if>
+      <if test="groundAirRated != null">
+        ground_air_rated = #{groundAirRated,jdbcType=VARCHAR},
+      </if>
+      <if test="groundAirTotal != null">
+        ground_air_total = #{groundAirTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFly != null">
+        total_fly = #{totalFly,jdbcType=VARCHAR},
+      </if>
+      <if test="totalRated != null">
+        total_rated = #{totalRated,jdbcType=VARCHAR},
+      </if>
+      <if test="totalTotal != null">
+        total_total = #{totalTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="totalStartTimes != null">
+        total_start_times = #{totalStartTimes,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.engine_system.entity.ResumeEight">
+    update resume_eight
+    set plane_id = #{planeId,jdbcType=INTEGER},
+      eight_date = #{eightDate,jdbcType=DATE},
+      today_start_times = #{todayStartTimes,jdbcType=INTEGER},
+      ground_fly = #{groundFly,jdbcType=VARCHAR},
+      ground_rated = #{groundRated,jdbcType=VARCHAR},
+      ground_total = #{groundTotal,jdbcType=VARCHAR},
+      air_fly = #{airFly,jdbcType=VARCHAR},
+      air_rated = #{airRated,jdbcType=VARCHAR},
+      air_total = #{airTotal,jdbcType=VARCHAR},
+      ground_air_fly = #{groundAirFly,jdbcType=VARCHAR},
+      ground_air_rated = #{groundAirRated,jdbcType=VARCHAR},
+      ground_air_total = #{groundAirTotal,jdbcType=VARCHAR},
+      total_fly = #{totalFly,jdbcType=VARCHAR},
+      total_rated = #{totalRated,jdbcType=VARCHAR},
+      total_total = #{totalTotal,jdbcType=VARCHAR},
+      total_start_times = #{totalStartTimes,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

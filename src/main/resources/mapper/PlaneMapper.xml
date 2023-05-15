@@ -1,0 +1,2077 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.engine_system.mapper.PlaneMapper">
+  <resultMap id="BaseResultMap" type="com.example.engine_system.entity.Plane">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="work_number" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="plane_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="unit_number" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="plane_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="plane_nose_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="factory" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="at_unit_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="manufacturing_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="vertical_tail_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="into_factory_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="send_unit" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="insititute" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="garrison" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="beginning_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="last_refurbishment_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="repair_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="flight_hours" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="specified_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="residual_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="total_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="this_used_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="total_up_down" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="last_up_down" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="repair_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="calendar_limit_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="remaining_calendar_year" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="remaining_calendar_month" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="used_calendar_year" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="used_calendar_month" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="engine_model" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_remaining_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_total_work_hours" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_total_work_hours" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_last_repair_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_last_repair_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_expiration_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="engine_right_expiration_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="engine_left_operational_hours" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_operational_hours" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_mid_up_hours" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_mid_up_hours" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_mid_up_rest_hours" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_mid_up_rest_hours" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_remaining_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_remaining_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_total_service_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_total_service_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_specified_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_specified_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_residual_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_residual_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_sp_state_residual_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_sp_state_residual_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_s_state_residual_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_s_state_residual_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_starting_remaining_life" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="engine_right_starting_remaining_life" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="engine_left_sp_major_cycles" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="engine_right_sp_major_cycles" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="engine_left_s_major_cycles" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="engine_right_s_major_cycles" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="engine_left_repaired_times" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="engine_right_repaired_times" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="engine_left_overhaul_factory" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_overhaul_factory" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_repair_make_factory" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_repair_make_factory" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_last_delivery_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="engine_right_last_delivery_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="engine_left_manufacturing_data" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="engine_right_manufacturing_data" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="engine_left_nine" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="engine_right_nine" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="engine_left_oil_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_oil_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_oil_seal_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="engine_right_oil_seal_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="engine_left_oil_seal_deadline" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="engine_right_oil_seal_deadline" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="engine_left_flaw_detection" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_flaw_detection" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_left_next_inspection" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_right_next_inspection" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_left_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_right_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_left_total_hours" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_right_total_hours" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_left_last_repair_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_right_last_repair_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_left_remaining_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_right_remaining_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_left_total_service_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_right_total_service_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_left_residual_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_right_residual_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_left_sp_state_residual_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_right_sp_state_residual_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_left_state_residual_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_right_state_residual_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_left_starting_remaining_life" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="receiver_right_starting_remaining_life" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="receiver_left_expiration_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="receiver_right_expiration_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="receiver_left_manufacturing_factory" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_right_manufacturing_factory" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_left_manufacturing_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="receiver_right_manufacturing_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="receiver_left_specified_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_right_specified_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_left_repaired_times" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="receiver_right_repaired_times" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="receiver_left_overhaul_factory" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_right_overhaul_factory" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_left_last_delivery_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="receiver_right_last_delivery_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="receiver_left_manufacture_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="receiver_right_manufacture_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="starter_left_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="starter_right_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="starter_left_specified_life" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="starter_right_specified_life" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="starter_left_residual_life" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="starter_right_residual_life" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="starter_left_renovations" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="starter_right_renovations" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="starter_left_remaining_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="starter_right_remaining_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="starter_left_total_service_life" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="starter_right_total_service_life" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="starter_left_expiration_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="starter_right_expiration_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="starter_left_repaired_times" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="starter_right_repaired_times" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="starter_left_manufacturing_factory" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="starter_right_manufacturing_factory" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="starter_left_overhaul_factory" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="starter_right_overhaul_factory" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="starter_left_last_delivery_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="starter_right_last_delivery_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="starter_left_manufacture_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="starter_right_manufacture_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="regulator_left_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="regulator_right_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="regulator_left_model" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="regulator_right_model" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="regulator_left_remaining_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="regulator_right_remaining_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="regulator_left_residual_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="regulator_right_residual_life" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="air_generator_model" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="air_generator_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="air_generator_start_times" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="air_generator_repaired_times" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="air_generator_specified_starting_times" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="air_generator_overhaul_factory" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="air_generator_manufacture_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="air_generator_remaining_times" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="air_generator_repair_times" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, work_number, plane_type, unit_number, plane_num, plane_nose_num, factory, at_unit_num,
+    manufacturing_date, vertical_tail_num, into_factory_date, send_unit, insititute, 
+    garrison, beginning_time, last_refurbishment_time, repair_date, flight_hours, specified_life, 
+    residual_life, total_life, this_used_life, total_up_down, last_up_down, repair_num, 
+    calendar_limit_time, remaining_calendar_year, remaining_calendar_month, used_calendar_year, 
+    used_calendar_month, engine_model, engine_remaining_time, engine_left_num, engine_right_num, 
+    engine_left_total_work_hours, engine_right_total_work_hours, engine_left_last_repair_time, 
+    engine_right_last_repair_time, engine_left_expiration_date, engine_right_expiration_date, 
+    engine_left_operational_hours, engine_right_operational_hours, engine_left_mid_up_hours, 
+    engine_right_mid_up_hours, engine_left_mid_up_rest_hours, engine_right_mid_up_rest_hours, 
+    engine_left_remaining_time, engine_right_remaining_time, engine_left_total_service_life, 
+    engine_right_total_service_life, engine_left_specified_life, engine_right_specified_life, 
+    engine_left_residual_life, engine_right_residual_life, engine_left_sp_state_residual_life, 
+    engine_right_sp_state_residual_life, engine_left_s_state_residual_life, engine_right_s_state_residual_life, 
+    engine_left_starting_remaining_life, engine_right_starting_remaining_life, engine_left_sp_major_cycles, 
+    engine_right_sp_major_cycles, engine_left_s_major_cycles, engine_right_s_major_cycles, 
+    engine_left_repaired_times, engine_right_repaired_times, engine_left_overhaul_factory, 
+    engine_right_overhaul_factory, engine_left_repair_make_factory, engine_right_repair_make_factory, 
+    engine_left_last_delivery_date, engine_right_last_delivery_date, engine_left_manufacturing_data, 
+    engine_right_manufacturing_data, engine_left_nine, engine_right_nine, engine_left_oil_num, 
+    engine_right_oil_num, engine_left_oil_seal_date, engine_right_oil_seal_date, engine_left_oil_seal_deadline, 
+    engine_right_oil_seal_deadline, engine_left_flaw_detection, engine_right_flaw_detection, 
+    engine_left_next_inspection, engine_right_next_inspection, receiver_left_num, receiver_right_num, 
+    receiver_left_total_hours, receiver_right_total_hours, receiver_left_last_repair_time, 
+    receiver_right_last_repair_time, receiver_left_remaining_time, receiver_right_remaining_time, 
+    receiver_left_total_service_life, receiver_right_total_service_life, receiver_left_residual_life, 
+    receiver_right_residual_life, receiver_left_sp_state_residual_life, receiver_right_sp_state_residual_life, 
+    receiver_left_state_residual_life, receiver_right_state_residual_life, receiver_left_starting_remaining_life, 
+    receiver_right_starting_remaining_life, receiver_left_expiration_date, receiver_right_expiration_date, 
+    receiver_left_manufacturing_factory, receiver_right_manufacturing_factory, receiver_left_manufacturing_date, 
+    receiver_right_manufacturing_date, receiver_left_specified_life, receiver_right_specified_life, 
+    receiver_left_repaired_times, receiver_right_repaired_times, receiver_left_overhaul_factory, 
+    receiver_right_overhaul_factory, receiver_left_last_delivery_date, receiver_right_last_delivery_date, 
+    receiver_left_manufacture_date, receiver_right_manufacture_date, starter_left_num, 
+    starter_right_num, starter_left_specified_life, starter_right_specified_life, starter_left_residual_life, 
+    starter_right_residual_life, starter_left_renovations, starter_right_renovations, 
+    starter_left_remaining_time, starter_right_remaining_time, starter_left_total_service_life, 
+    starter_right_total_service_life, starter_left_expiration_date, starter_right_expiration_date, 
+    starter_left_repaired_times, starter_right_repaired_times, starter_left_manufacturing_factory, 
+    starter_right_manufacturing_factory, starter_left_overhaul_factory, starter_right_overhaul_factory, 
+    starter_left_last_delivery_date, starter_right_last_delivery_date, starter_left_manufacture_date, 
+    starter_right_manufacture_date, regulator_left_num, regulator_right_num, regulator_left_model, 
+    regulator_right_model, regulator_left_remaining_time, regulator_right_remaining_time, 
+    regulator_left_residual_life, regulator_right_residual_life, air_generator_model, 
+    air_generator_num, air_generator_start_times, air_generator_repaired_times, air_generator_specified_starting_times, 
+    air_generator_overhaul_factory, air_generator_manufacture_date, air_generator_remaining_times, 
+    air_generator_repair_times
+  </sql>
+
+  <select id="getAllPlanes" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from plane
+    <where>
+      <if test="work_number != null and work_number != ''">
+        work_number like concat('%',#{work_number,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="plane_type != null and plane_type != ''">
+        plane_type = #{plane_type}
+      </if>
+      <if test="unit_number != null and unit_number != ''">
+        unit_number like concat('%',#{unit_number,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="plane_num != null and plane_num != ''">
+        plane_num like concat('%',#{plane_num,jdbcType=VARCHAR},'%')
+      </if>
+    </where>
+    order by id desc
+  </select>
+
+  <insert id="addPlane" parameterType="java.util.ArrayList">
+    insert into plane ( <include refid="Base_Column_List" />) values
+    <foreach collection="list" index="index" separator="," item="item">
+      (#{item.id,jdbcType=INTEGER}, #{item.type,jdbcType=VARCHAR}, #{item.planeId,jdbcType=INTEGER}, #{item.engineDate,jdbcType=DATE},
+      #{item.engineStartTimes,jdbcType=INTEGER}, #{item.engineSGroundFlight,jdbcType=VARCHAR},
+      #{item.engineSpGroundFlight,jdbcType=VARCHAR}, #{item.engineSFlight,jdbcType=VARCHAR}, #{item.engineSpFlight,jdbcType=VARCHAR},
+      #{item.engineSStateWork,jdbcType=VARCHAR}, #{item.engineYsStateWork,jdbcType=VARCHAR}, #{item.engineSpStateWork,jdbcType=VARCHAR},
+      #{item.engineSAllStateWork,jdbcType=VARCHAR}, #{item.engineSpAllStateWork,jdbcType=VARCHAR},
+      #{item.engineSMainCycle,jdbcType=INTEGER}, #{item.engineSpMainCycle,jdbcType=INTEGER}, #{item.receiverDate,jdbcType=DATE},
+      #{item.receiverStartTimes,jdbcType=INTEGER}, #{item.receiverSGroundFlight,jdbcType=VARCHAR},
+      #{item.receiverSpGroundFlight,jdbcType=VARCHAR}, #{item.receiverSFlight,jdbcType=VARCHAR},
+      #{item.receiverSpFlight,jdbcType=VARCHAR}, #{item.receiverSStateWork,jdbcType=VARCHAR}, #{item.receiverYsStateWork,jdbcType=VARCHAR},
+      #{item.receiverSpStateWork,jdbcType=VARCHAR}, #{item.receiverSAllStateWork,jdbcType=VARCHAR},
+      #{item.receiverSpAllStateWork,jdbcType=VARCHAR}, #{item.sEngineDate,jdbcType=DATE}, #{item.sEngineStartTimes,jdbcType=INTEGER},
+      #{item.sEngineLastRepair,jdbcType=INTEGER}, #{item.sEngineLastOilSealRepair,jdbcType=INTEGER},
+      #{item.sEngineAllStart,jdbcType=INTEGER}, #{item.sEngineAllOilSeal,jdbcType=INTEGER})
+    </foreach>
+    ON DUPLICATE KEY UPDATE
+    type = values(type),
+    plane_id = values(plane_id),
+    engine_date = values(engine_date),
+    engine_start_times = values(engine_start_times),
+    engine_s_ground_flight = values(engine_s_ground_flight),
+    engine_sp_ground_flight = values(engine_sp_ground_flight),
+    engine_s_flight = values(engine_s_flight),
+    engine_sp_flight = values(engine_sp_flight),
+    engine_s_state_work = values(engine_s_state_work),
+    engine_ys_state_work = values(engine_ys_state_work),
+    engine_sp_state_work = values(engine_sp_state_work),
+    engine_s_all_state_work = values(engine_s_all_state_work),
+    engine_sp_all_state_work = values(engine_sp_all_state_work),
+    engine_s_main_cycle = values(engine_s_main_cycle),
+    engine_sp_main_cycle = values(engine_sp_main_cycle),
+    receiver_date = values(receiver_date),
+    receiver_start_times = values(receiver_start_times),
+    receiver_s_ground_flight = values(receiver_s_ground_flight),
+    receiver_sp_ground_flight = values(receiver_sp_ground_flight),
+    receiver_s_flight = values(receiver_s_flight),
+    receiver_sp_flight = values(receiver_sp_flight),
+    receiver_s_state_work = values(receiver_s_state_work),
+    receiver_ys_state_work = values(receiver_ys_state_work),
+    receiver_sp_state_work = values(receiver_sp_state_work),
+    receiver_s_all_state_work = values(receiver_s_all_state_work),
+    receiver_sp_all_state_work = values(receiver_sp_all_state_work),
+    s_engine_date = values(s_engine_date),
+    s_engine_start_times = values(s_engine_start_times),
+    s_engine_last_repair = values(s_engine_last_repair),
+    s_engine_last_oil_seal_repair = values(s_engine_last_oil_seal_repair),
+    s_engine_all_start = values(s_engine_all_start),
+    s_engine_all_oil_seal = values(s_engine_all_oil_seal)
+  </insert>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from plane
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from plane
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.engine_system.entity.Plane">
+    insert into plane (work_number, plane_type,
+      unit_number, plane_num, plane_nose_num,
+      factory, at_unit_num, manufacturing_date,
+      vertical_tail_num, into_factory_date, send_unit,
+      insititute, garrison, beginning_time,
+      last_refurbishment_time, repair_date, flight_hours,
+      specified_life, residual_life, total_life,
+      this_used_life, total_up_down, last_up_down,
+      repair_num, calendar_limit_time, remaining_calendar_year,
+      remaining_calendar_month, used_calendar_year,
+      used_calendar_month, engine_model, engine_remaining_time,
+      engine_left_num, engine_right_num, engine_left_total_work_hours,
+      engine_right_total_work_hours, engine_left_last_repair_time,
+      engine_right_last_repair_time, engine_left_expiration_date,
+      engine_right_expiration_date, engine_left_operational_hours,
+      engine_right_operational_hours, engine_left_mid_up_hours,
+      engine_right_mid_up_hours, engine_left_mid_up_rest_hours,
+      engine_right_mid_up_rest_hours, engine_left_remaining_time,
+      engine_right_remaining_time, engine_left_total_service_life,
+      engine_right_total_service_life, engine_left_specified_life,
+      engine_right_specified_life, engine_left_residual_life,
+      engine_right_residual_life, engine_left_sp_state_residual_life,
+      engine_right_sp_state_residual_life, engine_left_s_state_residual_life,
+      engine_right_s_state_residual_life, engine_left_starting_remaining_life,
+      engine_right_starting_remaining_life, engine_left_sp_major_cycles,
+      engine_right_sp_major_cycles, engine_left_s_major_cycles,
+      engine_right_s_major_cycles, engine_left_repaired_times,
+      engine_right_repaired_times, engine_left_overhaul_factory,
+      engine_right_overhaul_factory, engine_left_repair_make_factory,
+      engine_right_repair_make_factory, engine_left_last_delivery_date,
+      engine_right_last_delivery_date, engine_left_manufacturing_data,
+      engine_right_manufacturing_data, engine_left_nine,
+      engine_right_nine, engine_left_oil_num, engine_right_oil_num,
+      engine_left_oil_seal_date, engine_right_oil_seal_date,
+      engine_left_oil_seal_deadline, engine_right_oil_seal_deadline,
+      engine_left_flaw_detection, engine_right_flaw_detection,
+      engine_left_next_inspection, engine_right_next_inspection,
+      receiver_left_num, receiver_right_num, receiver_left_total_hours,
+      receiver_right_total_hours, receiver_left_last_repair_time,
+      receiver_right_last_repair_time, receiver_left_remaining_time,
+      receiver_right_remaining_time, receiver_left_total_service_life,
+      receiver_right_total_service_life, receiver_left_residual_life,
+      receiver_right_residual_life, receiver_left_sp_state_residual_life,
+      receiver_right_sp_state_residual_life, receiver_left_state_residual_life,
+      receiver_right_state_residual_life, receiver_left_starting_remaining_life,
+      receiver_right_starting_remaining_life, receiver_left_expiration_date,
+      receiver_right_expiration_date, receiver_left_manufacturing_factory,
+      receiver_right_manufacturing_factory, receiver_left_manufacturing_date,
+      receiver_right_manufacturing_date, receiver_left_specified_life,
+      receiver_right_specified_life, receiver_left_repaired_times,
+      receiver_right_repaired_times, receiver_left_overhaul_factory,
+      receiver_right_overhaul_factory, receiver_left_last_delivery_date,
+      receiver_right_last_delivery_date, receiver_left_manufacture_date,
+      receiver_right_manufacture_date, starter_left_num,
+      starter_right_num, starter_left_specified_life,
+      starter_right_specified_life, starter_left_residual_life,
+      starter_right_residual_life, starter_left_renovations,
+      starter_right_renovations, starter_left_remaining_time,
+      starter_right_remaining_time, starter_left_total_service_life,
+      starter_right_total_service_life, starter_left_expiration_date,
+      starter_right_expiration_date, starter_left_repaired_times,
+      starter_right_repaired_times, starter_left_manufacturing_factory,
+      starter_right_manufacturing_factory, starter_left_overhaul_factory,
+      starter_right_overhaul_factory, starter_left_last_delivery_date,
+      starter_right_last_delivery_date, starter_left_manufacture_date,
+      starter_right_manufacture_date, regulator_left_num,
+      regulator_right_num, regulator_left_model,
+      regulator_right_model, regulator_left_remaining_time,
+      regulator_right_remaining_time, regulator_left_residual_life,
+      regulator_right_residual_life, air_generator_model,
+      air_generator_num, air_generator_start_times,
+      air_generator_repaired_times, air_generator_specified_starting_times,
+      air_generator_overhaul_factory, air_generator_manufacture_date,
+      air_generator_remaining_times, air_generator_repair_times
+      )
+    values (#{workNumber,jdbcType=VARCHAR}, #{planeType,jdbcType=VARCHAR},
+      #{unitNumber,jdbcType=VARCHAR}, #{planeNum,jdbcType=VARCHAR}, #{planeNoseNum,jdbcType=VARCHAR},
+      #{factory,jdbcType=VARCHAR}, #{atUnitNum,jdbcType=VARCHAR}, #{manufacturingDate,jdbcType=DATE},
+      #{verticalTailNum,jdbcType=VARCHAR}, #{intoFactoryDate,jdbcType=DATE}, #{sendUnit,jdbcType=VARCHAR},
+      #{insititute,jdbcType=VARCHAR}, #{garrison,jdbcType=VARCHAR}, #{beginningTime,jdbcType=VARCHAR},
+      #{lastRefurbishmentTime,jdbcType=VARCHAR}, #{repairDate,jdbcType=DATE}, #{flightHours,jdbcType=INTEGER},
+      #{specifiedLife,jdbcType=VARCHAR}, #{residualLife,jdbcType=VARCHAR}, #{totalLife,jdbcType=VARCHAR},
+      #{thisUsedLife,jdbcType=VARCHAR}, #{totalUpDown,jdbcType=INTEGER}, #{lastUpDown,jdbcType=INTEGER},
+      #{repairNum,jdbcType=INTEGER}, #{calendarLimitTime,jdbcType=VARCHAR}, #{remainingCalendarYear,jdbcType=INTEGER},
+      #{remainingCalendarMonth,jdbcType=INTEGER}, #{usedCalendarYear,jdbcType=INTEGER},
+      #{usedCalendarMonth,jdbcType=INTEGER}, #{engineModel,jdbcType=VARCHAR}, #{engineRemainingTime,jdbcType=VARCHAR},
+      #{engineLeftNum,jdbcType=VARCHAR}, #{engineRightNum,jdbcType=VARCHAR}, #{engineLeftTotalWorkHours,jdbcType=VARCHAR},
+      #{engineRightTotalWorkHours,jdbcType=VARCHAR}, #{engineLeftLastRepairTime,jdbcType=VARCHAR},
+      #{engineRightLastRepairTime,jdbcType=VARCHAR}, #{engineLeftExpirationDate,jdbcType=DATE},
+      #{engineRightExpirationDate,jdbcType=DATE}, #{engineLeftOperationalHours,jdbcType=VARCHAR},
+      #{engineRightOperationalHours,jdbcType=VARCHAR}, #{engineLeftMidUpHours,jdbcType=VARCHAR},
+      #{engineRightMidUpHours,jdbcType=VARCHAR}, #{engineLeftMidUpRestHours,jdbcType=VARCHAR},
+      #{engineRightMidUpRestHours,jdbcType=VARCHAR}, #{engineLeftRemainingTime,jdbcType=VARCHAR},
+      #{engineRightRemainingTime,jdbcType=VARCHAR}, #{engineLeftTotalServiceLife,jdbcType=VARCHAR},
+      #{engineRightTotalServiceLife,jdbcType=VARCHAR}, #{engineLeftSpecifiedLife,jdbcType=VARCHAR},
+      #{engineRightSpecifiedLife,jdbcType=VARCHAR}, #{engineLeftResidualLife,jdbcType=VARCHAR},
+      #{engineRightResidualLife,jdbcType=VARCHAR}, #{engineLeftSpStateResidualLife,jdbcType=VARCHAR},
+      #{engineRightSpStateResidualLife,jdbcType=VARCHAR}, #{engineLeftSStateResidualLife,jdbcType=VARCHAR},
+      #{engineRightSStateResidualLife,jdbcType=VARCHAR}, #{engineLeftStartingRemainingLife,jdbcType=INTEGER},
+      #{engineRightStartingRemainingLife,jdbcType=INTEGER}, #{engineLeftSpMajorCycles,jdbcType=INTEGER},
+      #{engineRightSpMajorCycles,jdbcType=INTEGER}, #{engineLeftSMajorCycles,jdbcType=INTEGER},
+      #{engineRightSMajorCycles,jdbcType=INTEGER}, #{engineLeftRepairedTimes,jdbcType=INTEGER},
+      #{engineRightRepairedTimes,jdbcType=INTEGER}, #{engineLeftOverhaulFactory,jdbcType=VARCHAR},
+      #{engineRightOverhaulFactory,jdbcType=VARCHAR}, #{engineLeftRepairMakeFactory,jdbcType=VARCHAR},
+      #{engineRightRepairMakeFactory,jdbcType=VARCHAR}, #{engineLeftLastDeliveryDate,jdbcType=DATE},
+      #{engineRightLastDeliveryDate,jdbcType=DATE}, #{engineLeftManufacturingData,jdbcType=DATE},
+      #{engineRightManufacturingData,jdbcType=DATE}, #{engineLeftNine,jdbcType=DATE},
+      #{engineRightNine,jdbcType=DATE}, #{engineLeftOilNum,jdbcType=VARCHAR}, #{engineRightOilNum,jdbcType=VARCHAR},
+      #{engineLeftOilSealDate,jdbcType=DATE}, #{engineRightOilSealDate,jdbcType=DATE},
+      #{engineLeftOilSealDeadline,jdbcType=DATE}, #{engineRightOilSealDeadline,jdbcType=DATE},
+      #{engineLeftFlawDetection,jdbcType=VARCHAR}, #{engineRightFlawDetection,jdbcType=VARCHAR},
+      #{engineLeftNextInspection,jdbcType=VARCHAR}, #{engineRightNextInspection,jdbcType=VARCHAR},
+      #{receiverLeftNum,jdbcType=VARCHAR}, #{receiverRightNum,jdbcType=VARCHAR}, #{receiverLeftTotalHours,jdbcType=VARCHAR},
+      #{receiverRightTotalHours,jdbcType=VARCHAR}, #{receiverLeftLastRepairTime,jdbcType=VARCHAR},
+      #{receiverRightLastRepairTime,jdbcType=VARCHAR}, #{receiverLeftRemainingTime,jdbcType=VARCHAR},
+      #{receiverRightRemainingTime,jdbcType=VARCHAR}, #{receiverLeftTotalServiceLife,jdbcType=VARCHAR},
+      #{receiverRightTotalServiceLife,jdbcType=VARCHAR}, #{receiverLeftResidualLife,jdbcType=VARCHAR},
+      #{receiverRightResidualLife,jdbcType=VARCHAR}, #{receiverLeftSpStateResidualLife,jdbcType=VARCHAR},
+      #{receiverRightSpStateResidualLife,jdbcType=VARCHAR}, #{receiverLeftStateResidualLife,jdbcType=VARCHAR},
+      #{receiverRightStateResidualLife,jdbcType=VARCHAR}, #{receiverLeftStartingRemainingLife,jdbcType=INTEGER},
+      #{receiverRightStartingRemainingLife,jdbcType=INTEGER}, #{receiverLeftExpirationDate,jdbcType=DATE},
+      #{receiverRightExpirationDate,jdbcType=DATE}, #{receiverLeftManufacturingFactory,jdbcType=VARCHAR},
+      #{receiverRightManufacturingFactory,jdbcType=VARCHAR}, #{receiverLeftManufacturingDate,jdbcType=DATE},
+      #{receiverRightManufacturingDate,jdbcType=DATE}, #{receiverLeftSpecifiedLife,jdbcType=VARCHAR},
+      #{receiverRightSpecifiedLife,jdbcType=VARCHAR}, #{receiverLeftRepairedTimes,jdbcType=INTEGER},
+      #{receiverRightRepairedTimes,jdbcType=INTEGER}, #{receiverLeftOverhaulFactory,jdbcType=VARCHAR},
+      #{receiverRightOverhaulFactory,jdbcType=VARCHAR}, #{receiverLeftLastDeliveryDate,jdbcType=DATE},
+      #{receiverRightLastDeliveryDate,jdbcType=DATE}, #{receiverLeftManufactureDate,jdbcType=DATE},
+      #{receiverRightManufactureDate,jdbcType=DATE}, #{starterLeftNum,jdbcType=VARCHAR},
+      #{starterRightNum,jdbcType=VARCHAR}, #{starterLeftSpecifiedLife,jdbcType=INTEGER},
+      #{starterRightSpecifiedLife,jdbcType=INTEGER}, #{starterLeftResidualLife,jdbcType=INTEGER},
+      #{starterRightResidualLife,jdbcType=INTEGER}, #{starterLeftRenovations,jdbcType=INTEGER},
+      #{starterRightRenovations,jdbcType=INTEGER}, #{starterLeftRemainingTime,jdbcType=VARCHAR},
+      #{starterRightRemainingTime,jdbcType=VARCHAR}, #{starterLeftTotalServiceLife,jdbcType=INTEGER},
+      #{starterRightTotalServiceLife,jdbcType=INTEGER}, #{starterLeftExpirationDate,jdbcType=DATE},
+      #{starterRightExpirationDate,jdbcType=DATE}, #{starterLeftRepairedTimes,jdbcType=INTEGER},
+      #{starterRightRepairedTimes,jdbcType=INTEGER}, #{starterLeftManufacturingFactory,jdbcType=VARCHAR},
+      #{starterRightManufacturingFactory,jdbcType=VARCHAR}, #{starterLeftOverhaulFactory,jdbcType=VARCHAR},
+      #{starterRightOverhaulFactory,jdbcType=VARCHAR}, #{starterLeftLastDeliveryDate,jdbcType=DATE},
+      #{starterRightLastDeliveryDate,jdbcType=DATE}, #{starterLeftManufactureDate,jdbcType=DATE},
+      #{starterRightManufactureDate,jdbcType=DATE}, #{regulatorLeftNum,jdbcType=VARCHAR},
+      #{regulatorRightNum,jdbcType=VARCHAR}, #{regulatorLeftModel,jdbcType=VARCHAR},
+      #{regulatorRightModel,jdbcType=VARCHAR}, #{regulatorLeftRemainingTime,jdbcType=VARCHAR},
+      #{regulatorRightRemainingTime,jdbcType=VARCHAR}, #{regulatorLeftResidualLife,jdbcType=VARCHAR},
+      #{regulatorRightResidualLife,jdbcType=VARCHAR}, #{airGeneratorModel,jdbcType=VARCHAR},
+      #{airGeneratorNum,jdbcType=VARCHAR}, #{airGeneratorStartTimes,jdbcType=INTEGER},
+      #{airGeneratorRepairedTimes,jdbcType=VARCHAR}, #{airGeneratorSpecifiedStartingTimes,jdbcType=INTEGER},
+      #{airGeneratorOverhaulFactory,jdbcType=VARCHAR}, #{airGeneratorManufactureDate,jdbcType=DATE},
+      #{airGeneratorRemainingTimes,jdbcType=INTEGER}, #{airGeneratorRepairTimes,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.engine_system.entity.Plane">
+    insert into plane
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="workNumber != null">
+        work_number,
+      </if>
+      <if test="planeType != null">
+        plane_type,
+      </if>
+      <if test="unitNumber != null">
+        unit_number,
+      </if>
+      <if test="planeNum != null">
+        plane_num,
+      </if>
+      <if test="planeNoseNum != null">
+        plane_nose_num,
+      </if>
+      <if test="factory != null">
+        factory,
+      </if>
+      <if test="atUnitNum != null">
+        at_unit_num,
+      </if>
+      <if test="manufacturingDate != null">
+        manufacturing_date,
+      </if>
+      <if test="verticalTailNum != null">
+        vertical_tail_num,
+      </if>
+      <if test="intoFactoryDate != null">
+        into_factory_date,
+      </if>
+      <if test="sendUnit != null">
+        send_unit,
+      </if>
+      <if test="insititute != null">
+        insititute,
+      </if>
+      <if test="garrison != null">
+        garrison,
+      </if>
+      <if test="beginningTime != null">
+        beginning_time,
+      </if>
+      <if test="lastRefurbishmentTime != null">
+        last_refurbishment_time,
+      </if>
+      <if test="repairDate != null">
+        repair_date,
+      </if>
+      <if test="flightHours != null">
+        flight_hours,
+      </if>
+      <if test="specifiedLife != null">
+        specified_life,
+      </if>
+      <if test="residualLife != null">
+        residual_life,
+      </if>
+      <if test="totalLife != null">
+        total_life,
+      </if>
+      <if test="thisUsedLife != null">
+        this_used_life,
+      </if>
+      <if test="totalUpDown != null">
+        total_up_down,
+      </if>
+      <if test="lastUpDown != null">
+        last_up_down,
+      </if>
+      <if test="repairNum != null">
+        repair_num,
+      </if>
+      <if test="calendarLimitTime != null">
+        calendar_limit_time,
+      </if>
+      <if test="remainingCalendarYear != null">
+        remaining_calendar_year,
+      </if>
+      <if test="remainingCalendarMonth != null">
+        remaining_calendar_month,
+      </if>
+      <if test="usedCalendarYear != null">
+        used_calendar_year,
+      </if>
+      <if test="usedCalendarMonth != null">
+        used_calendar_month,
+      </if>
+      <if test="engineModel != null">
+        engine_model,
+      </if>
+      <if test="engineRemainingTime != null">
+        engine_remaining_time,
+      </if>
+      <if test="engineLeftNum != null">
+        engine_left_num,
+      </if>
+      <if test="engineRightNum != null">
+        engine_right_num,
+      </if>
+      <if test="engineLeftTotalWorkHours != null">
+        engine_left_total_work_hours,
+      </if>
+      <if test="engineRightTotalWorkHours != null">
+        engine_right_total_work_hours,
+      </if>
+      <if test="engineLeftLastRepairTime != null">
+        engine_left_last_repair_time,
+      </if>
+      <if test="engineRightLastRepairTime != null">
+        engine_right_last_repair_time,
+      </if>
+      <if test="engineLeftExpirationDate != null">
+        engine_left_expiration_date,
+      </if>
+      <if test="engineRightExpirationDate != null">
+        engine_right_expiration_date,
+      </if>
+      <if test="engineLeftOperationalHours != null">
+        engine_left_operational_hours,
+      </if>
+      <if test="engineRightOperationalHours != null">
+        engine_right_operational_hours,
+      </if>
+      <if test="engineLeftMidUpHours != null">
+        engine_left_mid_up_hours,
+      </if>
+      <if test="engineRightMidUpHours != null">
+        engine_right_mid_up_hours,
+      </if>
+      <if test="engineLeftMidUpRestHours != null">
+        engine_left_mid_up_rest_hours,
+      </if>
+      <if test="engineRightMidUpRestHours != null">
+        engine_right_mid_up_rest_hours,
+      </if>
+      <if test="engineLeftRemainingTime != null">
+        engine_left_remaining_time,
+      </if>
+      <if test="engineRightRemainingTime != null">
+        engine_right_remaining_time,
+      </if>
+      <if test="engineLeftTotalServiceLife != null">
+        engine_left_total_service_life,
+      </if>
+      <if test="engineRightTotalServiceLife != null">
+        engine_right_total_service_life,
+      </if>
+      <if test="engineLeftSpecifiedLife != null">
+        engine_left_specified_life,
+      </if>
+      <if test="engineRightSpecifiedLife != null">
+        engine_right_specified_life,
+      </if>
+      <if test="engineLeftResidualLife != null">
+        engine_left_residual_life,
+      </if>
+      <if test="engineRightResidualLife != null">
+        engine_right_residual_life,
+      </if>
+      <if test="engineLeftSpStateResidualLife != null">
+        engine_left_sp_state_residual_life,
+      </if>
+      <if test="engineRightSpStateResidualLife != null">
+        engine_right_sp_state_residual_life,
+      </if>
+      <if test="engineLeftSStateResidualLife != null">
+        engine_left_s_state_residual_life,
+      </if>
+      <if test="engineRightSStateResidualLife != null">
+        engine_right_s_state_residual_life,
+      </if>
+      <if test="engineLeftStartingRemainingLife != null">
+        engine_left_starting_remaining_life,
+      </if>
+      <if test="engineRightStartingRemainingLife != null">
+        engine_right_starting_remaining_life,
+      </if>
+      <if test="engineLeftSpMajorCycles != null">
+        engine_left_sp_major_cycles,
+      </if>
+      <if test="engineRightSpMajorCycles != null">
+        engine_right_sp_major_cycles,
+      </if>
+      <if test="engineLeftSMajorCycles != null">
+        engine_left_s_major_cycles,
+      </if>
+      <if test="engineRightSMajorCycles != null">
+        engine_right_s_major_cycles,
+      </if>
+      <if test="engineLeftRepairedTimes != null">
+        engine_left_repaired_times,
+      </if>
+      <if test="engineRightRepairedTimes != null">
+        engine_right_repaired_times,
+      </if>
+      <if test="engineLeftOverhaulFactory != null">
+        engine_left_overhaul_factory,
+      </if>
+      <if test="engineRightOverhaulFactory != null">
+        engine_right_overhaul_factory,
+      </if>
+      <if test="engineLeftRepairMakeFactory != null">
+        engine_left_repair_make_factory,
+      </if>
+      <if test="engineRightRepairMakeFactory != null">
+        engine_right_repair_make_factory,
+      </if>
+      <if test="engineLeftLastDeliveryDate != null">
+        engine_left_last_delivery_date,
+      </if>
+      <if test="engineRightLastDeliveryDate != null">
+        engine_right_last_delivery_date,
+      </if>
+      <if test="engineLeftManufacturingData != null">
+        engine_left_manufacturing_data,
+      </if>
+      <if test="engineRightManufacturingData != null">
+        engine_right_manufacturing_data,
+      </if>
+      <if test="engineLeftNine != null">
+        engine_left_nine,
+      </if>
+      <if test="engineRightNine != null">
+        engine_right_nine,
+      </if>
+      <if test="engineLeftOilNum != null">
+        engine_left_oil_num,
+      </if>
+      <if test="engineRightOilNum != null">
+        engine_right_oil_num,
+      </if>
+      <if test="engineLeftOilSealDate != null">
+        engine_left_oil_seal_date,
+      </if>
+      <if test="engineRightOilSealDate != null">
+        engine_right_oil_seal_date,
+      </if>
+      <if test="engineLeftOilSealDeadline != null">
+        engine_left_oil_seal_deadline,
+      </if>
+      <if test="engineRightOilSealDeadline != null">
+        engine_right_oil_seal_deadline,
+      </if>
+      <if test="engineLeftFlawDetection != null">
+        engine_left_flaw_detection,
+      </if>
+      <if test="engineRightFlawDetection != null">
+        engine_right_flaw_detection,
+      </if>
+      <if test="engineLeftNextInspection != null">
+        engine_left_next_inspection,
+      </if>
+      <if test="engineRightNextInspection != null">
+        engine_right_next_inspection,
+      </if>
+      <if test="receiverLeftNum != null">
+        receiver_left_num,
+      </if>
+      <if test="receiverRightNum != null">
+        receiver_right_num,
+      </if>
+      <if test="receiverLeftTotalHours != null">
+        receiver_left_total_hours,
+      </if>
+      <if test="receiverRightTotalHours != null">
+        receiver_right_total_hours,
+      </if>
+      <if test="receiverLeftLastRepairTime != null">
+        receiver_left_last_repair_time,
+      </if>
+      <if test="receiverRightLastRepairTime != null">
+        receiver_right_last_repair_time,
+      </if>
+      <if test="receiverLeftRemainingTime != null">
+        receiver_left_remaining_time,
+      </if>
+      <if test="receiverRightRemainingTime != null">
+        receiver_right_remaining_time,
+      </if>
+      <if test="receiverLeftTotalServiceLife != null">
+        receiver_left_total_service_life,
+      </if>
+      <if test="receiverRightTotalServiceLife != null">
+        receiver_right_total_service_life,
+      </if>
+      <if test="receiverLeftResidualLife != null">
+        receiver_left_residual_life,
+      </if>
+      <if test="receiverRightResidualLife != null">
+        receiver_right_residual_life,
+      </if>
+      <if test="receiverLeftSpStateResidualLife != null">
+        receiver_left_sp_state_residual_life,
+      </if>
+      <if test="receiverRightSpStateResidualLife != null">
+        receiver_right_sp_state_residual_life,
+      </if>
+      <if test="receiverLeftStateResidualLife != null">
+        receiver_left_state_residual_life,
+      </if>
+      <if test="receiverRightStateResidualLife != null">
+        receiver_right_state_residual_life,
+      </if>
+      <if test="receiverLeftStartingRemainingLife != null">
+        receiver_left_starting_remaining_life,
+      </if>
+      <if test="receiverRightStartingRemainingLife != null">
+        receiver_right_starting_remaining_life,
+      </if>
+      <if test="receiverLeftExpirationDate != null">
+        receiver_left_expiration_date,
+      </if>
+      <if test="receiverRightExpirationDate != null">
+        receiver_right_expiration_date,
+      </if>
+      <if test="receiverLeftManufacturingFactory != null">
+        receiver_left_manufacturing_factory,
+      </if>
+      <if test="receiverRightManufacturingFactory != null">
+        receiver_right_manufacturing_factory,
+      </if>
+      <if test="receiverLeftManufacturingDate != null">
+        receiver_left_manufacturing_date,
+      </if>
+      <if test="receiverRightManufacturingDate != null">
+        receiver_right_manufacturing_date,
+      </if>
+      <if test="receiverLeftSpecifiedLife != null">
+        receiver_left_specified_life,
+      </if>
+      <if test="receiverRightSpecifiedLife != null">
+        receiver_right_specified_life,
+      </if>
+      <if test="receiverLeftRepairedTimes != null">
+        receiver_left_repaired_times,
+      </if>
+      <if test="receiverRightRepairedTimes != null">
+        receiver_right_repaired_times,
+      </if>
+      <if test="receiverLeftOverhaulFactory != null">
+        receiver_left_overhaul_factory,
+      </if>
+      <if test="receiverRightOverhaulFactory != null">
+        receiver_right_overhaul_factory,
+      </if>
+      <if test="receiverLeftLastDeliveryDate != null">
+        receiver_left_last_delivery_date,
+      </if>
+      <if test="receiverRightLastDeliveryDate != null">
+        receiver_right_last_delivery_date,
+      </if>
+      <if test="receiverLeftManufactureDate != null">
+        receiver_left_manufacture_date,
+      </if>
+      <if test="receiverRightManufactureDate != null">
+        receiver_right_manufacture_date,
+      </if>
+      <if test="starterLeftNum != null">
+        starter_left_num,
+      </if>
+      <if test="starterRightNum != null">
+        starter_right_num,
+      </if>
+      <if test="starterLeftSpecifiedLife != null">
+        starter_left_specified_life,
+      </if>
+      <if test="starterRightSpecifiedLife != null">
+        starter_right_specified_life,
+      </if>
+      <if test="starterLeftResidualLife != null">
+        starter_left_residual_life,
+      </if>
+      <if test="starterRightResidualLife != null">
+        starter_right_residual_life,
+      </if>
+      <if test="starterLeftRenovations != null">
+        starter_left_renovations,
+      </if>
+      <if test="starterRightRenovations != null">
+        starter_right_renovations,
+      </if>
+      <if test="starterLeftRemainingTime != null">
+        starter_left_remaining_time,
+      </if>
+      <if test="starterRightRemainingTime != null">
+        starter_right_remaining_time,
+      </if>
+      <if test="starterLeftTotalServiceLife != null">
+        starter_left_total_service_life,
+      </if>
+      <if test="starterRightTotalServiceLife != null">
+        starter_right_total_service_life,
+      </if>
+      <if test="starterLeftExpirationDate != null">
+        starter_left_expiration_date,
+      </if>
+      <if test="starterRightExpirationDate != null">
+        starter_right_expiration_date,
+      </if>
+      <if test="starterLeftRepairedTimes != null">
+        starter_left_repaired_times,
+      </if>
+      <if test="starterRightRepairedTimes != null">
+        starter_right_repaired_times,
+      </if>
+      <if test="starterLeftManufacturingFactory != null">
+        starter_left_manufacturing_factory,
+      </if>
+      <if test="starterRightManufacturingFactory != null">
+        starter_right_manufacturing_factory,
+      </if>
+      <if test="starterLeftOverhaulFactory != null">
+        starter_left_overhaul_factory,
+      </if>
+      <if test="starterRightOverhaulFactory != null">
+        starter_right_overhaul_factory,
+      </if>
+      <if test="starterLeftLastDeliveryDate != null">
+        starter_left_last_delivery_date,
+      </if>
+      <if test="starterRightLastDeliveryDate != null">
+        starter_right_last_delivery_date,
+      </if>
+      <if test="starterLeftManufactureDate != null">
+        starter_left_manufacture_date,
+      </if>
+      <if test="starterRightManufactureDate != null">
+        starter_right_manufacture_date,
+      </if>
+      <if test="regulatorLeftNum != null">
+        regulator_left_num,
+      </if>
+      <if test="regulatorRightNum != null">
+        regulator_right_num,
+      </if>
+      <if test="regulatorLeftModel != null">
+        regulator_left_model,
+      </if>
+      <if test="regulatorRightModel != null">
+        regulator_right_model,
+      </if>
+      <if test="regulatorLeftRemainingTime != null">
+        regulator_left_remaining_time,
+      </if>
+      <if test="regulatorRightRemainingTime != null">
+        regulator_right_remaining_time,
+      </if>
+      <if test="regulatorLeftResidualLife != null">
+        regulator_left_residual_life,
+      </if>
+      <if test="regulatorRightResidualLife != null">
+        regulator_right_residual_life,
+      </if>
+      <if test="airGeneratorModel != null">
+        air_generator_model,
+      </if>
+      <if test="airGeneratorNum != null">
+        air_generator_num,
+      </if>
+      <if test="airGeneratorStartTimes != null">
+        air_generator_start_times,
+      </if>
+      <if test="airGeneratorRepairedTimes != null">
+        air_generator_repaired_times,
+      </if>
+      <if test="airGeneratorSpecifiedStartingTimes != null">
+        air_generator_specified_starting_times,
+      </if>
+      <if test="airGeneratorOverhaulFactory != null">
+        air_generator_overhaul_factory,
+      </if>
+      <if test="airGeneratorManufactureDate != null">
+        air_generator_manufacture_date,
+      </if>
+      <if test="airGeneratorRemainingTimes != null">
+        air_generator_remaining_times,
+      </if>
+      <if test="airGeneratorRepairTimes != null">
+        air_generator_repair_times,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="workNumber != null">
+        #{workNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="planeType != null">
+        #{planeType,jdbcType=VARCHAR},
+      </if>
+      <if test="unitNumber != null">
+        #{unitNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="planeNum != null">
+        #{planeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="planeNoseNum != null">
+        #{planeNoseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="factory != null">
+        #{factory,jdbcType=VARCHAR},
+      </if>
+      <if test="atUnitNum != null">
+        #{atUnitNum,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturingDate != null">
+        #{manufacturingDate,jdbcType=DATE},
+      </if>
+      <if test="verticalTailNum != null">
+        #{verticalTailNum,jdbcType=VARCHAR},
+      </if>
+      <if test="intoFactoryDate != null">
+        #{intoFactoryDate,jdbcType=DATE},
+      </if>
+      <if test="sendUnit != null">
+        #{sendUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="insititute != null">
+        #{insititute,jdbcType=VARCHAR},
+      </if>
+      <if test="garrison != null">
+        #{garrison,jdbcType=VARCHAR},
+      </if>
+      <if test="beginningTime != null">
+        #{beginningTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastRefurbishmentTime != null">
+        #{lastRefurbishmentTime,jdbcType=VARCHAR},
+      </if>
+      <if test="repairDate != null">
+        #{repairDate,jdbcType=DATE},
+      </if>
+      <if test="flightHours != null">
+        #{flightHours,jdbcType=INTEGER},
+      </if>
+      <if test="specifiedLife != null">
+        #{specifiedLife,jdbcType=VARCHAR},
+      </if>
+      <if test="residualLife != null">
+        #{residualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="totalLife != null">
+        #{totalLife,jdbcType=VARCHAR},
+      </if>
+      <if test="thisUsedLife != null">
+        #{thisUsedLife,jdbcType=VARCHAR},
+      </if>
+      <if test="totalUpDown != null">
+        #{totalUpDown,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpDown != null">
+        #{lastUpDown,jdbcType=INTEGER},
+      </if>
+      <if test="repairNum != null">
+        #{repairNum,jdbcType=INTEGER},
+      </if>
+      <if test="calendarLimitTime != null">
+        #{calendarLimitTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remainingCalendarYear != null">
+        #{remainingCalendarYear,jdbcType=INTEGER},
+      </if>
+      <if test="remainingCalendarMonth != null">
+        #{remainingCalendarMonth,jdbcType=INTEGER},
+      </if>
+      <if test="usedCalendarYear != null">
+        #{usedCalendarYear,jdbcType=INTEGER},
+      </if>
+      <if test="usedCalendarMonth != null">
+        #{usedCalendarMonth,jdbcType=INTEGER},
+      </if>
+      <if test="engineModel != null">
+        #{engineModel,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRemainingTime != null">
+        #{engineRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftNum != null">
+        #{engineLeftNum,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightNum != null">
+        #{engineRightNum,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftTotalWorkHours != null">
+        #{engineLeftTotalWorkHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightTotalWorkHours != null">
+        #{engineRightTotalWorkHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftLastRepairTime != null">
+        #{engineLeftLastRepairTime,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightLastRepairTime != null">
+        #{engineRightLastRepairTime,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftExpirationDate != null">
+        #{engineLeftExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="engineRightExpirationDate != null">
+        #{engineRightExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="engineLeftOperationalHours != null">
+        #{engineLeftOperationalHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightOperationalHours != null">
+        #{engineRightOperationalHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftMidUpHours != null">
+        #{engineLeftMidUpHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightMidUpHours != null">
+        #{engineRightMidUpHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftMidUpRestHours != null">
+        #{engineLeftMidUpRestHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightMidUpRestHours != null">
+        #{engineRightMidUpRestHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftRemainingTime != null">
+        #{engineLeftRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightRemainingTime != null">
+        #{engineRightRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftTotalServiceLife != null">
+        #{engineLeftTotalServiceLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightTotalServiceLife != null">
+        #{engineRightTotalServiceLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftSpecifiedLife != null">
+        #{engineLeftSpecifiedLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightSpecifiedLife != null">
+        #{engineRightSpecifiedLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftResidualLife != null">
+        #{engineLeftResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightResidualLife != null">
+        #{engineRightResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftSpStateResidualLife != null">
+        #{engineLeftSpStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightSpStateResidualLife != null">
+        #{engineRightSpStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftSStateResidualLife != null">
+        #{engineLeftSStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightSStateResidualLife != null">
+        #{engineRightSStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftStartingRemainingLife != null">
+        #{engineLeftStartingRemainingLife,jdbcType=INTEGER},
+      </if>
+      <if test="engineRightStartingRemainingLife != null">
+        #{engineRightStartingRemainingLife,jdbcType=INTEGER},
+      </if>
+      <if test="engineLeftSpMajorCycles != null">
+        #{engineLeftSpMajorCycles,jdbcType=INTEGER},
+      </if>
+      <if test="engineRightSpMajorCycles != null">
+        #{engineRightSpMajorCycles,jdbcType=INTEGER},
+      </if>
+      <if test="engineLeftSMajorCycles != null">
+        #{engineLeftSMajorCycles,jdbcType=INTEGER},
+      </if>
+      <if test="engineRightSMajorCycles != null">
+        #{engineRightSMajorCycles,jdbcType=INTEGER},
+      </if>
+      <if test="engineLeftRepairedTimes != null">
+        #{engineLeftRepairedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="engineRightRepairedTimes != null">
+        #{engineRightRepairedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="engineLeftOverhaulFactory != null">
+        #{engineLeftOverhaulFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightOverhaulFactory != null">
+        #{engineRightOverhaulFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftRepairMakeFactory != null">
+        #{engineLeftRepairMakeFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightRepairMakeFactory != null">
+        #{engineRightRepairMakeFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftLastDeliveryDate != null">
+        #{engineLeftLastDeliveryDate,jdbcType=DATE},
+      </if>
+      <if test="engineRightLastDeliveryDate != null">
+        #{engineRightLastDeliveryDate,jdbcType=DATE},
+      </if>
+      <if test="engineLeftManufacturingData != null">
+        #{engineLeftManufacturingData,jdbcType=DATE},
+      </if>
+      <if test="engineRightManufacturingData != null">
+        #{engineRightManufacturingData,jdbcType=DATE},
+      </if>
+      <if test="engineLeftNine != null">
+        #{engineLeftNine,jdbcType=DATE},
+      </if>
+      <if test="engineRightNine != null">
+        #{engineRightNine,jdbcType=DATE},
+      </if>
+      <if test="engineLeftOilNum != null">
+        #{engineLeftOilNum,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightOilNum != null">
+        #{engineRightOilNum,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftOilSealDate != null">
+        #{engineLeftOilSealDate,jdbcType=DATE},
+      </if>
+      <if test="engineRightOilSealDate != null">
+        #{engineRightOilSealDate,jdbcType=DATE},
+      </if>
+      <if test="engineLeftOilSealDeadline != null">
+        #{engineLeftOilSealDeadline,jdbcType=DATE},
+      </if>
+      <if test="engineRightOilSealDeadline != null">
+        #{engineRightOilSealDeadline,jdbcType=DATE},
+      </if>
+      <if test="engineLeftFlawDetection != null">
+        #{engineLeftFlawDetection,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightFlawDetection != null">
+        #{engineRightFlawDetection,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftNextInspection != null">
+        #{engineLeftNextInspection,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightNextInspection != null">
+        #{engineRightNextInspection,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftNum != null">
+        #{receiverLeftNum,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightNum != null">
+        #{receiverRightNum,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftTotalHours != null">
+        #{receiverLeftTotalHours,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightTotalHours != null">
+        #{receiverRightTotalHours,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftLastRepairTime != null">
+        #{receiverLeftLastRepairTime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightLastRepairTime != null">
+        #{receiverRightLastRepairTime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftRemainingTime != null">
+        #{receiverLeftRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightRemainingTime != null">
+        #{receiverRightRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftTotalServiceLife != null">
+        #{receiverLeftTotalServiceLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightTotalServiceLife != null">
+        #{receiverRightTotalServiceLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftResidualLife != null">
+        #{receiverLeftResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightResidualLife != null">
+        #{receiverRightResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftSpStateResidualLife != null">
+        #{receiverLeftSpStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightSpStateResidualLife != null">
+        #{receiverRightSpStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftStateResidualLife != null">
+        #{receiverLeftStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightStateResidualLife != null">
+        #{receiverRightStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftStartingRemainingLife != null">
+        #{receiverLeftStartingRemainingLife,jdbcType=INTEGER},
+      </if>
+      <if test="receiverRightStartingRemainingLife != null">
+        #{receiverRightStartingRemainingLife,jdbcType=INTEGER},
+      </if>
+      <if test="receiverLeftExpirationDate != null">
+        #{receiverLeftExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="receiverRightExpirationDate != null">
+        #{receiverRightExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="receiverLeftManufacturingFactory != null">
+        #{receiverLeftManufacturingFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightManufacturingFactory != null">
+        #{receiverRightManufacturingFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftManufacturingDate != null">
+        #{receiverLeftManufacturingDate,jdbcType=DATE},
+      </if>
+      <if test="receiverRightManufacturingDate != null">
+        #{receiverRightManufacturingDate,jdbcType=DATE},
+      </if>
+      <if test="receiverLeftSpecifiedLife != null">
+        #{receiverLeftSpecifiedLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightSpecifiedLife != null">
+        #{receiverRightSpecifiedLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftRepairedTimes != null">
+        #{receiverLeftRepairedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="receiverRightRepairedTimes != null">
+        #{receiverRightRepairedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="receiverLeftOverhaulFactory != null">
+        #{receiverLeftOverhaulFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightOverhaulFactory != null">
+        #{receiverRightOverhaulFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftLastDeliveryDate != null">
+        #{receiverLeftLastDeliveryDate,jdbcType=DATE},
+      </if>
+      <if test="receiverRightLastDeliveryDate != null">
+        #{receiverRightLastDeliveryDate,jdbcType=DATE},
+      </if>
+      <if test="receiverLeftManufactureDate != null">
+        #{receiverLeftManufactureDate,jdbcType=DATE},
+      </if>
+      <if test="receiverRightManufactureDate != null">
+        #{receiverRightManufactureDate,jdbcType=DATE},
+      </if>
+      <if test="starterLeftNum != null">
+        #{starterLeftNum,jdbcType=VARCHAR},
+      </if>
+      <if test="starterRightNum != null">
+        #{starterRightNum,jdbcType=VARCHAR},
+      </if>
+      <if test="starterLeftSpecifiedLife != null">
+        #{starterLeftSpecifiedLife,jdbcType=INTEGER},
+      </if>
+      <if test="starterRightSpecifiedLife != null">
+        #{starterRightSpecifiedLife,jdbcType=INTEGER},
+      </if>
+      <if test="starterLeftResidualLife != null">
+        #{starterLeftResidualLife,jdbcType=INTEGER},
+      </if>
+      <if test="starterRightResidualLife != null">
+        #{starterRightResidualLife,jdbcType=INTEGER},
+      </if>
+      <if test="starterLeftRenovations != null">
+        #{starterLeftRenovations,jdbcType=INTEGER},
+      </if>
+      <if test="starterRightRenovations != null">
+        #{starterRightRenovations,jdbcType=INTEGER},
+      </if>
+      <if test="starterLeftRemainingTime != null">
+        #{starterLeftRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="starterRightRemainingTime != null">
+        #{starterRightRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="starterLeftTotalServiceLife != null">
+        #{starterLeftTotalServiceLife,jdbcType=INTEGER},
+      </if>
+      <if test="starterRightTotalServiceLife != null">
+        #{starterRightTotalServiceLife,jdbcType=INTEGER},
+      </if>
+      <if test="starterLeftExpirationDate != null">
+        #{starterLeftExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="starterRightExpirationDate != null">
+        #{starterRightExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="starterLeftRepairedTimes != null">
+        #{starterLeftRepairedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="starterRightRepairedTimes != null">
+        #{starterRightRepairedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="starterLeftManufacturingFactory != null">
+        #{starterLeftManufacturingFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="starterRightManufacturingFactory != null">
+        #{starterRightManufacturingFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="starterLeftOverhaulFactory != null">
+        #{starterLeftOverhaulFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="starterRightOverhaulFactory != null">
+        #{starterRightOverhaulFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="starterLeftLastDeliveryDate != null">
+        #{starterLeftLastDeliveryDate,jdbcType=DATE},
+      </if>
+      <if test="starterRightLastDeliveryDate != null">
+        #{starterRightLastDeliveryDate,jdbcType=DATE},
+      </if>
+      <if test="starterLeftManufactureDate != null">
+        #{starterLeftManufactureDate,jdbcType=DATE},
+      </if>
+      <if test="starterRightManufactureDate != null">
+        #{starterRightManufactureDate,jdbcType=DATE},
+      </if>
+      <if test="regulatorLeftNum != null">
+        #{regulatorLeftNum,jdbcType=VARCHAR},
+      </if>
+      <if test="regulatorRightNum != null">
+        #{regulatorRightNum,jdbcType=VARCHAR},
+      </if>
+      <if test="regulatorLeftModel != null">
+        #{regulatorLeftModel,jdbcType=VARCHAR},
+      </if>
+      <if test="regulatorRightModel != null">
+        #{regulatorRightModel,jdbcType=VARCHAR},
+      </if>
+      <if test="regulatorLeftRemainingTime != null">
+        #{regulatorLeftRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="regulatorRightRemainingTime != null">
+        #{regulatorRightRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="regulatorLeftResidualLife != null">
+        #{regulatorLeftResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="regulatorRightResidualLife != null">
+        #{regulatorRightResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="airGeneratorModel != null">
+        #{airGeneratorModel,jdbcType=VARCHAR},
+      </if>
+      <if test="airGeneratorNum != null">
+        #{airGeneratorNum,jdbcType=VARCHAR},
+      </if>
+      <if test="airGeneratorStartTimes != null">
+        #{airGeneratorStartTimes,jdbcType=INTEGER},
+      </if>
+      <if test="airGeneratorRepairedTimes != null">
+        #{airGeneratorRepairedTimes,jdbcType=VARCHAR},
+      </if>
+      <if test="airGeneratorSpecifiedStartingTimes != null">
+        #{airGeneratorSpecifiedStartingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="airGeneratorOverhaulFactory != null">
+        #{airGeneratorOverhaulFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="airGeneratorManufactureDate != null">
+        #{airGeneratorManufactureDate,jdbcType=DATE},
+      </if>
+      <if test="airGeneratorRemainingTimes != null">
+        #{airGeneratorRemainingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="airGeneratorRepairTimes != null">
+        #{airGeneratorRepairTimes,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.engine_system.entity.Plane">
+    update plane
+    <set>
+      <if test="workNumber != null">
+        work_number = #{workNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="planeType != null">
+        plane_type = #{planeType,jdbcType=VARCHAR},
+      </if>
+      <if test="unitNumber != null">
+        unit_number = #{unitNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="planeNum != null">
+        plane_num = #{planeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="planeNoseNum != null">
+        plane_nose_num = #{planeNoseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="factory != null">
+        factory = #{factory,jdbcType=VARCHAR},
+      </if>
+      <if test="atUnitNum != null">
+        at_unit_num = #{atUnitNum,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturingDate != null">
+        manufacturing_date = #{manufacturingDate,jdbcType=DATE},
+      </if>
+      <if test="verticalTailNum != null">
+        vertical_tail_num = #{verticalTailNum,jdbcType=VARCHAR},
+      </if>
+      <if test="intoFactoryDate != null">
+        into_factory_date = #{intoFactoryDate,jdbcType=DATE},
+      </if>
+      <if test="sendUnit != null">
+        send_unit = #{sendUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="insititute != null">
+        insititute = #{insititute,jdbcType=VARCHAR},
+      </if>
+      <if test="garrison != null">
+        garrison = #{garrison,jdbcType=VARCHAR},
+      </if>
+      <if test="beginningTime != null">
+        beginning_time = #{beginningTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastRefurbishmentTime != null">
+        last_refurbishment_time = #{lastRefurbishmentTime,jdbcType=VARCHAR},
+      </if>
+      <if test="repairDate != null">
+        repair_date = #{repairDate,jdbcType=DATE},
+      </if>
+      <if test="flightHours != null">
+        flight_hours = #{flightHours,jdbcType=INTEGER},
+      </if>
+      <if test="specifiedLife != null">
+        specified_life = #{specifiedLife,jdbcType=VARCHAR},
+      </if>
+      <if test="residualLife != null">
+        residual_life = #{residualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="totalLife != null">
+        total_life = #{totalLife,jdbcType=VARCHAR},
+      </if>
+      <if test="thisUsedLife != null">
+        this_used_life = #{thisUsedLife,jdbcType=VARCHAR},
+      </if>
+      <if test="totalUpDown != null">
+        total_up_down = #{totalUpDown,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpDown != null">
+        last_up_down = #{lastUpDown,jdbcType=INTEGER},
+      </if>
+      <if test="repairNum != null">
+        repair_num = #{repairNum,jdbcType=INTEGER},
+      </if>
+      <if test="calendarLimitTime != null">
+        calendar_limit_time = #{calendarLimitTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remainingCalendarYear != null">
+        remaining_calendar_year = #{remainingCalendarYear,jdbcType=INTEGER},
+      </if>
+      <if test="remainingCalendarMonth != null">
+        remaining_calendar_month = #{remainingCalendarMonth,jdbcType=INTEGER},
+      </if>
+      <if test="usedCalendarYear != null">
+        used_calendar_year = #{usedCalendarYear,jdbcType=INTEGER},
+      </if>
+      <if test="usedCalendarMonth != null">
+        used_calendar_month = #{usedCalendarMonth,jdbcType=INTEGER},
+      </if>
+      <if test="engineModel != null">
+        engine_model = #{engineModel,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRemainingTime != null">
+        engine_remaining_time = #{engineRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftNum != null">
+        engine_left_num = #{engineLeftNum,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightNum != null">
+        engine_right_num = #{engineRightNum,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftTotalWorkHours != null">
+        engine_left_total_work_hours = #{engineLeftTotalWorkHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightTotalWorkHours != null">
+        engine_right_total_work_hours = #{engineRightTotalWorkHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftLastRepairTime != null">
+        engine_left_last_repair_time = #{engineLeftLastRepairTime,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightLastRepairTime != null">
+        engine_right_last_repair_time = #{engineRightLastRepairTime,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftExpirationDate != null">
+        engine_left_expiration_date = #{engineLeftExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="engineRightExpirationDate != null">
+        engine_right_expiration_date = #{engineRightExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="engineLeftOperationalHours != null">
+        engine_left_operational_hours = #{engineLeftOperationalHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightOperationalHours != null">
+        engine_right_operational_hours = #{engineRightOperationalHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftMidUpHours != null">
+        engine_left_mid_up_hours = #{engineLeftMidUpHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightMidUpHours != null">
+        engine_right_mid_up_hours = #{engineRightMidUpHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftMidUpRestHours != null">
+        engine_left_mid_up_rest_hours = #{engineLeftMidUpRestHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightMidUpRestHours != null">
+        engine_right_mid_up_rest_hours = #{engineRightMidUpRestHours,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftRemainingTime != null">
+        engine_left_remaining_time = #{engineLeftRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightRemainingTime != null">
+        engine_right_remaining_time = #{engineRightRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftTotalServiceLife != null">
+        engine_left_total_service_life = #{engineLeftTotalServiceLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightTotalServiceLife != null">
+        engine_right_total_service_life = #{engineRightTotalServiceLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftSpecifiedLife != null">
+        engine_left_specified_life = #{engineLeftSpecifiedLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightSpecifiedLife != null">
+        engine_right_specified_life = #{engineRightSpecifiedLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftResidualLife != null">
+        engine_left_residual_life = #{engineLeftResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightResidualLife != null">
+        engine_right_residual_life = #{engineRightResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftSpStateResidualLife != null">
+        engine_left_sp_state_residual_life = #{engineLeftSpStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightSpStateResidualLife != null">
+        engine_right_sp_state_residual_life = #{engineRightSpStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftSStateResidualLife != null">
+        engine_left_s_state_residual_life = #{engineLeftSStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightSStateResidualLife != null">
+        engine_right_s_state_residual_life = #{engineRightSStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftStartingRemainingLife != null">
+        engine_left_starting_remaining_life = #{engineLeftStartingRemainingLife,jdbcType=INTEGER},
+      </if>
+      <if test="engineRightStartingRemainingLife != null">
+        engine_right_starting_remaining_life = #{engineRightStartingRemainingLife,jdbcType=INTEGER},
+      </if>
+      <if test="engineLeftSpMajorCycles != null">
+        engine_left_sp_major_cycles = #{engineLeftSpMajorCycles,jdbcType=INTEGER},
+      </if>
+      <if test="engineRightSpMajorCycles != null">
+        engine_right_sp_major_cycles = #{engineRightSpMajorCycles,jdbcType=INTEGER},
+      </if>
+      <if test="engineLeftSMajorCycles != null">
+        engine_left_s_major_cycles = #{engineLeftSMajorCycles,jdbcType=INTEGER},
+      </if>
+      <if test="engineRightSMajorCycles != null">
+        engine_right_s_major_cycles = #{engineRightSMajorCycles,jdbcType=INTEGER},
+      </if>
+      <if test="engineLeftRepairedTimes != null">
+        engine_left_repaired_times = #{engineLeftRepairedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="engineRightRepairedTimes != null">
+        engine_right_repaired_times = #{engineRightRepairedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="engineLeftOverhaulFactory != null">
+        engine_left_overhaul_factory = #{engineLeftOverhaulFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightOverhaulFactory != null">
+        engine_right_overhaul_factory = #{engineRightOverhaulFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftRepairMakeFactory != null">
+        engine_left_repair_make_factory = #{engineLeftRepairMakeFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightRepairMakeFactory != null">
+        engine_right_repair_make_factory = #{engineRightRepairMakeFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftLastDeliveryDate != null">
+        engine_left_last_delivery_date = #{engineLeftLastDeliveryDate,jdbcType=DATE},
+      </if>
+      <if test="engineRightLastDeliveryDate != null">
+        engine_right_last_delivery_date = #{engineRightLastDeliveryDate,jdbcType=DATE},
+      </if>
+      <if test="engineLeftManufacturingData != null">
+        engine_left_manufacturing_data = #{engineLeftManufacturingData,jdbcType=DATE},
+      </if>
+      <if test="engineRightManufacturingData != null">
+        engine_right_manufacturing_data = #{engineRightManufacturingData,jdbcType=DATE},
+      </if>
+      <if test="engineLeftNine != null">
+        engine_left_nine = #{engineLeftNine,jdbcType=DATE},
+      </if>
+      <if test="engineRightNine != null">
+        engine_right_nine = #{engineRightNine,jdbcType=DATE},
+      </if>
+      <if test="engineLeftOilNum != null">
+        engine_left_oil_num = #{engineLeftOilNum,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightOilNum != null">
+        engine_right_oil_num = #{engineRightOilNum,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftOilSealDate != null">
+        engine_left_oil_seal_date = #{engineLeftOilSealDate,jdbcType=DATE},
+      </if>
+      <if test="engineRightOilSealDate != null">
+        engine_right_oil_seal_date = #{engineRightOilSealDate,jdbcType=DATE},
+      </if>
+      <if test="engineLeftOilSealDeadline != null">
+        engine_left_oil_seal_deadline = #{engineLeftOilSealDeadline,jdbcType=DATE},
+      </if>
+      <if test="engineRightOilSealDeadline != null">
+        engine_right_oil_seal_deadline = #{engineRightOilSealDeadline,jdbcType=DATE},
+      </if>
+      <if test="engineLeftFlawDetection != null">
+        engine_left_flaw_detection = #{engineLeftFlawDetection,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightFlawDetection != null">
+        engine_right_flaw_detection = #{engineRightFlawDetection,jdbcType=VARCHAR},
+      </if>
+      <if test="engineLeftNextInspection != null">
+        engine_left_next_inspection = #{engineLeftNextInspection,jdbcType=VARCHAR},
+      </if>
+      <if test="engineRightNextInspection != null">
+        engine_right_next_inspection = #{engineRightNextInspection,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftNum != null">
+        receiver_left_num = #{receiverLeftNum,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightNum != null">
+        receiver_right_num = #{receiverRightNum,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftTotalHours != null">
+        receiver_left_total_hours = #{receiverLeftTotalHours,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightTotalHours != null">
+        receiver_right_total_hours = #{receiverRightTotalHours,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftLastRepairTime != null">
+        receiver_left_last_repair_time = #{receiverLeftLastRepairTime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightLastRepairTime != null">
+        receiver_right_last_repair_time = #{receiverRightLastRepairTime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftRemainingTime != null">
+        receiver_left_remaining_time = #{receiverLeftRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightRemainingTime != null">
+        receiver_right_remaining_time = #{receiverRightRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftTotalServiceLife != null">
+        receiver_left_total_service_life = #{receiverLeftTotalServiceLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightTotalServiceLife != null">
+        receiver_right_total_service_life = #{receiverRightTotalServiceLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftResidualLife != null">
+        receiver_left_residual_life = #{receiverLeftResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightResidualLife != null">
+        receiver_right_residual_life = #{receiverRightResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftSpStateResidualLife != null">
+        receiver_left_sp_state_residual_life = #{receiverLeftSpStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightSpStateResidualLife != null">
+        receiver_right_sp_state_residual_life = #{receiverRightSpStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftStateResidualLife != null">
+        receiver_left_state_residual_life = #{receiverLeftStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightStateResidualLife != null">
+        receiver_right_state_residual_life = #{receiverRightStateResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftStartingRemainingLife != null">
+        receiver_left_starting_remaining_life = #{receiverLeftStartingRemainingLife,jdbcType=INTEGER},
+      </if>
+      <if test="receiverRightStartingRemainingLife != null">
+        receiver_right_starting_remaining_life = #{receiverRightStartingRemainingLife,jdbcType=INTEGER},
+      </if>
+      <if test="receiverLeftExpirationDate != null">
+        receiver_left_expiration_date = #{receiverLeftExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="receiverRightExpirationDate != null">
+        receiver_right_expiration_date = #{receiverRightExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="receiverLeftManufacturingFactory != null">
+        receiver_left_manufacturing_factory = #{receiverLeftManufacturingFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightManufacturingFactory != null">
+        receiver_right_manufacturing_factory = #{receiverRightManufacturingFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftManufacturingDate != null">
+        receiver_left_manufacturing_date = #{receiverLeftManufacturingDate,jdbcType=DATE},
+      </if>
+      <if test="receiverRightManufacturingDate != null">
+        receiver_right_manufacturing_date = #{receiverRightManufacturingDate,jdbcType=DATE},
+      </if>
+      <if test="receiverLeftSpecifiedLife != null">
+        receiver_left_specified_life = #{receiverLeftSpecifiedLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightSpecifiedLife != null">
+        receiver_right_specified_life = #{receiverRightSpecifiedLife,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftRepairedTimes != null">
+        receiver_left_repaired_times = #{receiverLeftRepairedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="receiverRightRepairedTimes != null">
+        receiver_right_repaired_times = #{receiverRightRepairedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="receiverLeftOverhaulFactory != null">
+        receiver_left_overhaul_factory = #{receiverLeftOverhaulFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRightOverhaulFactory != null">
+        receiver_right_overhaul_factory = #{receiverRightOverhaulFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverLeftLastDeliveryDate != null">
+        receiver_left_last_delivery_date = #{receiverLeftLastDeliveryDate,jdbcType=DATE},
+      </if>
+      <if test="receiverRightLastDeliveryDate != null">
+        receiver_right_last_delivery_date = #{receiverRightLastDeliveryDate,jdbcType=DATE},
+      </if>
+      <if test="receiverLeftManufactureDate != null">
+        receiver_left_manufacture_date = #{receiverLeftManufactureDate,jdbcType=DATE},
+      </if>
+      <if test="receiverRightManufactureDate != null">
+        receiver_right_manufacture_date = #{receiverRightManufactureDate,jdbcType=DATE},
+      </if>
+      <if test="starterLeftNum != null">
+        starter_left_num = #{starterLeftNum,jdbcType=VARCHAR},
+      </if>
+      <if test="starterRightNum != null">
+        starter_right_num = #{starterRightNum,jdbcType=VARCHAR},
+      </if>
+      <if test="starterLeftSpecifiedLife != null">
+        starter_left_specified_life = #{starterLeftSpecifiedLife,jdbcType=INTEGER},
+      </if>
+      <if test="starterRightSpecifiedLife != null">
+        starter_right_specified_life = #{starterRightSpecifiedLife,jdbcType=INTEGER},
+      </if>
+      <if test="starterLeftResidualLife != null">
+        starter_left_residual_life = #{starterLeftResidualLife,jdbcType=INTEGER},
+      </if>
+      <if test="starterRightResidualLife != null">
+        starter_right_residual_life = #{starterRightResidualLife,jdbcType=INTEGER},
+      </if>
+      <if test="starterLeftRenovations != null">
+        starter_left_renovations = #{starterLeftRenovations,jdbcType=INTEGER},
+      </if>
+      <if test="starterRightRenovations != null">
+        starter_right_renovations = #{starterRightRenovations,jdbcType=INTEGER},
+      </if>
+      <if test="starterLeftRemainingTime != null">
+        starter_left_remaining_time = #{starterLeftRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="starterRightRemainingTime != null">
+        starter_right_remaining_time = #{starterRightRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="starterLeftTotalServiceLife != null">
+        starter_left_total_service_life = #{starterLeftTotalServiceLife,jdbcType=INTEGER},
+      </if>
+      <if test="starterRightTotalServiceLife != null">
+        starter_right_total_service_life = #{starterRightTotalServiceLife,jdbcType=INTEGER},
+      </if>
+      <if test="starterLeftExpirationDate != null">
+        starter_left_expiration_date = #{starterLeftExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="starterRightExpirationDate != null">
+        starter_right_expiration_date = #{starterRightExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="starterLeftRepairedTimes != null">
+        starter_left_repaired_times = #{starterLeftRepairedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="starterRightRepairedTimes != null">
+        starter_right_repaired_times = #{starterRightRepairedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="starterLeftManufacturingFactory != null">
+        starter_left_manufacturing_factory = #{starterLeftManufacturingFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="starterRightManufacturingFactory != null">
+        starter_right_manufacturing_factory = #{starterRightManufacturingFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="starterLeftOverhaulFactory != null">
+        starter_left_overhaul_factory = #{starterLeftOverhaulFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="starterRightOverhaulFactory != null">
+        starter_right_overhaul_factory = #{starterRightOverhaulFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="starterLeftLastDeliveryDate != null">
+        starter_left_last_delivery_date = #{starterLeftLastDeliveryDate,jdbcType=DATE},
+      </if>
+      <if test="starterRightLastDeliveryDate != null">
+        starter_right_last_delivery_date = #{starterRightLastDeliveryDate,jdbcType=DATE},
+      </if>
+      <if test="starterLeftManufactureDate != null">
+        starter_left_manufacture_date = #{starterLeftManufactureDate,jdbcType=DATE},
+      </if>
+      <if test="starterRightManufactureDate != null">
+        starter_right_manufacture_date = #{starterRightManufactureDate,jdbcType=DATE},
+      </if>
+      <if test="regulatorLeftNum != null">
+        regulator_left_num = #{regulatorLeftNum,jdbcType=VARCHAR},
+      </if>
+      <if test="regulatorRightNum != null">
+        regulator_right_num = #{regulatorRightNum,jdbcType=VARCHAR},
+      </if>
+      <if test="regulatorLeftModel != null">
+        regulator_left_model = #{regulatorLeftModel,jdbcType=VARCHAR},
+      </if>
+      <if test="regulatorRightModel != null">
+        regulator_right_model = #{regulatorRightModel,jdbcType=VARCHAR},
+      </if>
+      <if test="regulatorLeftRemainingTime != null">
+        regulator_left_remaining_time = #{regulatorLeftRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="regulatorRightRemainingTime != null">
+        regulator_right_remaining_time = #{regulatorRightRemainingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="regulatorLeftResidualLife != null">
+        regulator_left_residual_life = #{regulatorLeftResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="regulatorRightResidualLife != null">
+        regulator_right_residual_life = #{regulatorRightResidualLife,jdbcType=VARCHAR},
+      </if>
+      <if test="airGeneratorModel != null">
+        air_generator_model = #{airGeneratorModel,jdbcType=VARCHAR},
+      </if>
+      <if test="airGeneratorNum != null">
+        air_generator_num = #{airGeneratorNum,jdbcType=VARCHAR},
+      </if>
+      <if test="airGeneratorStartTimes != null">
+        air_generator_start_times = #{airGeneratorStartTimes,jdbcType=INTEGER},
+      </if>
+      <if test="airGeneratorRepairedTimes != null">
+        air_generator_repaired_times = #{airGeneratorRepairedTimes,jdbcType=VARCHAR},
+      </if>
+      <if test="airGeneratorSpecifiedStartingTimes != null">
+        air_generator_specified_starting_times = #{airGeneratorSpecifiedStartingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="airGeneratorOverhaulFactory != null">
+        air_generator_overhaul_factory = #{airGeneratorOverhaulFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="airGeneratorManufactureDate != null">
+        air_generator_manufacture_date = #{airGeneratorManufactureDate,jdbcType=DATE},
+      </if>
+      <if test="airGeneratorRemainingTimes != null">
+        air_generator_remaining_times = #{airGeneratorRemainingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="airGeneratorRepairTimes != null">
+        air_generator_repair_times = #{airGeneratorRepairTimes,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.engine_system.entity.Plane">
+    update plane
+    set work_number = #{workNumber,jdbcType=VARCHAR},
+      plane_type = #{planeType,jdbcType=VARCHAR},
+      unit_number = #{unitNumber,jdbcType=VARCHAR},
+      plane_num = #{planeNum,jdbcType=VARCHAR},
+      plane_nose_num = #{planeNoseNum,jdbcType=VARCHAR},
+      factory = #{factory,jdbcType=VARCHAR},
+      at_unit_num = #{atUnitNum,jdbcType=VARCHAR},
+      manufacturing_date = #{manufacturingDate,jdbcType=DATE},
+      vertical_tail_num = #{verticalTailNum,jdbcType=VARCHAR},
+      into_factory_date = #{intoFactoryDate,jdbcType=DATE},
+      send_unit = #{sendUnit,jdbcType=VARCHAR},
+      insititute = #{insititute,jdbcType=VARCHAR},
+      garrison = #{garrison,jdbcType=VARCHAR},
+      beginning_time = #{beginningTime,jdbcType=VARCHAR},
+      last_refurbishment_time = #{lastRefurbishmentTime,jdbcType=VARCHAR},
+      repair_date = #{repairDate,jdbcType=DATE},
+      flight_hours = #{flightHours,jdbcType=INTEGER},
+      specified_life = #{specifiedLife,jdbcType=VARCHAR},
+      residual_life = #{residualLife,jdbcType=VARCHAR},
+      total_life = #{totalLife,jdbcType=VARCHAR},
+      this_used_life = #{thisUsedLife,jdbcType=VARCHAR},
+      total_up_down = #{totalUpDown,jdbcType=INTEGER},
+      last_up_down = #{lastUpDown,jdbcType=INTEGER},
+      repair_num = #{repairNum,jdbcType=INTEGER},
+      calendar_limit_time = #{calendarLimitTime,jdbcType=VARCHAR},
+      remaining_calendar_year = #{remainingCalendarYear,jdbcType=INTEGER},
+      remaining_calendar_month = #{remainingCalendarMonth,jdbcType=INTEGER},
+      used_calendar_year = #{usedCalendarYear,jdbcType=INTEGER},
+      used_calendar_month = #{usedCalendarMonth,jdbcType=INTEGER},
+      engine_model = #{engineModel,jdbcType=VARCHAR},
+      engine_remaining_time = #{engineRemainingTime,jdbcType=VARCHAR},
+      engine_left_num = #{engineLeftNum,jdbcType=VARCHAR},
+      engine_right_num = #{engineRightNum,jdbcType=VARCHAR},
+      engine_left_total_work_hours = #{engineLeftTotalWorkHours,jdbcType=VARCHAR},
+      engine_right_total_work_hours = #{engineRightTotalWorkHours,jdbcType=VARCHAR},
+      engine_left_last_repair_time = #{engineLeftLastRepairTime,jdbcType=VARCHAR},
+      engine_right_last_repair_time = #{engineRightLastRepairTime,jdbcType=VARCHAR},
+      engine_left_expiration_date = #{engineLeftExpirationDate,jdbcType=DATE},
+      engine_right_expiration_date = #{engineRightExpirationDate,jdbcType=DATE},
+      engine_left_operational_hours = #{engineLeftOperationalHours,jdbcType=VARCHAR},
+      engine_right_operational_hours = #{engineRightOperationalHours,jdbcType=VARCHAR},
+      engine_left_mid_up_hours = #{engineLeftMidUpHours,jdbcType=VARCHAR},
+      engine_right_mid_up_hours = #{engineRightMidUpHours,jdbcType=VARCHAR},
+      engine_left_mid_up_rest_hours = #{engineLeftMidUpRestHours,jdbcType=VARCHAR},
+      engine_right_mid_up_rest_hours = #{engineRightMidUpRestHours,jdbcType=VARCHAR},
+      engine_left_remaining_time = #{engineLeftRemainingTime,jdbcType=VARCHAR},
+      engine_right_remaining_time = #{engineRightRemainingTime,jdbcType=VARCHAR},
+      engine_left_total_service_life = #{engineLeftTotalServiceLife,jdbcType=VARCHAR},
+      engine_right_total_service_life = #{engineRightTotalServiceLife,jdbcType=VARCHAR},
+      engine_left_specified_life = #{engineLeftSpecifiedLife,jdbcType=VARCHAR},
+      engine_right_specified_life = #{engineRightSpecifiedLife,jdbcType=VARCHAR},
+      engine_left_residual_life = #{engineLeftResidualLife,jdbcType=VARCHAR},
+      engine_right_residual_life = #{engineRightResidualLife,jdbcType=VARCHAR},
+      engine_left_sp_state_residual_life = #{engineLeftSpStateResidualLife,jdbcType=VARCHAR},
+      engine_right_sp_state_residual_life = #{engineRightSpStateResidualLife,jdbcType=VARCHAR},
+      engine_left_s_state_residual_life = #{engineLeftSStateResidualLife,jdbcType=VARCHAR},
+      engine_right_s_state_residual_life = #{engineRightSStateResidualLife,jdbcType=VARCHAR},
+      engine_left_starting_remaining_life = #{engineLeftStartingRemainingLife,jdbcType=INTEGER},
+      engine_right_starting_remaining_life = #{engineRightStartingRemainingLife,jdbcType=INTEGER},
+      engine_left_sp_major_cycles = #{engineLeftSpMajorCycles,jdbcType=INTEGER},
+      engine_right_sp_major_cycles = #{engineRightSpMajorCycles,jdbcType=INTEGER},
+      engine_left_s_major_cycles = #{engineLeftSMajorCycles,jdbcType=INTEGER},
+      engine_right_s_major_cycles = #{engineRightSMajorCycles,jdbcType=INTEGER},
+      engine_left_repaired_times = #{engineLeftRepairedTimes,jdbcType=INTEGER},
+      engine_right_repaired_times = #{engineRightRepairedTimes,jdbcType=INTEGER},
+      engine_left_overhaul_factory = #{engineLeftOverhaulFactory,jdbcType=VARCHAR},
+      engine_right_overhaul_factory = #{engineRightOverhaulFactory,jdbcType=VARCHAR},
+      engine_left_repair_make_factory = #{engineLeftRepairMakeFactory,jdbcType=VARCHAR},
+      engine_right_repair_make_factory = #{engineRightRepairMakeFactory,jdbcType=VARCHAR},
+      engine_left_last_delivery_date = #{engineLeftLastDeliveryDate,jdbcType=DATE},
+      engine_right_last_delivery_date = #{engineRightLastDeliveryDate,jdbcType=DATE},
+      engine_left_manufacturing_data = #{engineLeftManufacturingData,jdbcType=DATE},
+      engine_right_manufacturing_data = #{engineRightManufacturingData,jdbcType=DATE},
+      engine_left_nine = #{engineLeftNine,jdbcType=DATE},
+      engine_right_nine = #{engineRightNine,jdbcType=DATE},
+      engine_left_oil_num = #{engineLeftOilNum,jdbcType=VARCHAR},
+      engine_right_oil_num = #{engineRightOilNum,jdbcType=VARCHAR},
+      engine_left_oil_seal_date = #{engineLeftOilSealDate,jdbcType=DATE},
+      engine_right_oil_seal_date = #{engineRightOilSealDate,jdbcType=DATE},
+      engine_left_oil_seal_deadline = #{engineLeftOilSealDeadline,jdbcType=DATE},
+      engine_right_oil_seal_deadline = #{engineRightOilSealDeadline,jdbcType=DATE},
+      engine_left_flaw_detection = #{engineLeftFlawDetection,jdbcType=VARCHAR},
+      engine_right_flaw_detection = #{engineRightFlawDetection,jdbcType=VARCHAR},
+      engine_left_next_inspection = #{engineLeftNextInspection,jdbcType=VARCHAR},
+      engine_right_next_inspection = #{engineRightNextInspection,jdbcType=VARCHAR},
+      receiver_left_num = #{receiverLeftNum,jdbcType=VARCHAR},
+      receiver_right_num = #{receiverRightNum,jdbcType=VARCHAR},
+      receiver_left_total_hours = #{receiverLeftTotalHours,jdbcType=VARCHAR},
+      receiver_right_total_hours = #{receiverRightTotalHours,jdbcType=VARCHAR},
+      receiver_left_last_repair_time = #{receiverLeftLastRepairTime,jdbcType=VARCHAR},
+      receiver_right_last_repair_time = #{receiverRightLastRepairTime,jdbcType=VARCHAR},
+      receiver_left_remaining_time = #{receiverLeftRemainingTime,jdbcType=VARCHAR},
+      receiver_right_remaining_time = #{receiverRightRemainingTime,jdbcType=VARCHAR},
+      receiver_left_total_service_life = #{receiverLeftTotalServiceLife,jdbcType=VARCHAR},
+      receiver_right_total_service_life = #{receiverRightTotalServiceLife,jdbcType=VARCHAR},
+      receiver_left_residual_life = #{receiverLeftResidualLife,jdbcType=VARCHAR},
+      receiver_right_residual_life = #{receiverRightResidualLife,jdbcType=VARCHAR},
+      receiver_left_sp_state_residual_life = #{receiverLeftSpStateResidualLife,jdbcType=VARCHAR},
+      receiver_right_sp_state_residual_life = #{receiverRightSpStateResidualLife,jdbcType=VARCHAR},
+      receiver_left_state_residual_life = #{receiverLeftStateResidualLife,jdbcType=VARCHAR},
+      receiver_right_state_residual_life = #{receiverRightStateResidualLife,jdbcType=VARCHAR},
+      receiver_left_starting_remaining_life = #{receiverLeftStartingRemainingLife,jdbcType=INTEGER},
+      receiver_right_starting_remaining_life = #{receiverRightStartingRemainingLife,jdbcType=INTEGER},
+      receiver_left_expiration_date = #{receiverLeftExpirationDate,jdbcType=DATE},
+      receiver_right_expiration_date = #{receiverRightExpirationDate,jdbcType=DATE},
+      receiver_left_manufacturing_factory = #{receiverLeftManufacturingFactory,jdbcType=VARCHAR},
+      receiver_right_manufacturing_factory = #{receiverRightManufacturingFactory,jdbcType=VARCHAR},
+      receiver_left_manufacturing_date = #{receiverLeftManufacturingDate,jdbcType=DATE},
+      receiver_right_manufacturing_date = #{receiverRightManufacturingDate,jdbcType=DATE},
+      receiver_left_specified_life = #{receiverLeftSpecifiedLife,jdbcType=VARCHAR},
+      receiver_right_specified_life = #{receiverRightSpecifiedLife,jdbcType=VARCHAR},
+      receiver_left_repaired_times = #{receiverLeftRepairedTimes,jdbcType=INTEGER},
+      receiver_right_repaired_times = #{receiverRightRepairedTimes,jdbcType=INTEGER},
+      receiver_left_overhaul_factory = #{receiverLeftOverhaulFactory,jdbcType=VARCHAR},
+      receiver_right_overhaul_factory = #{receiverRightOverhaulFactory,jdbcType=VARCHAR},
+      receiver_left_last_delivery_date = #{receiverLeftLastDeliveryDate,jdbcType=DATE},
+      receiver_right_last_delivery_date = #{receiverRightLastDeliveryDate,jdbcType=DATE},
+      receiver_left_manufacture_date = #{receiverLeftManufactureDate,jdbcType=DATE},
+      receiver_right_manufacture_date = #{receiverRightManufactureDate,jdbcType=DATE},
+      starter_left_num = #{starterLeftNum,jdbcType=VARCHAR},
+      starter_right_num = #{starterRightNum,jdbcType=VARCHAR},
+      starter_left_specified_life = #{starterLeftSpecifiedLife,jdbcType=INTEGER},
+      starter_right_specified_life = #{starterRightSpecifiedLife,jdbcType=INTEGER},
+      starter_left_residual_life = #{starterLeftResidualLife,jdbcType=INTEGER},
+      starter_right_residual_life = #{starterRightResidualLife,jdbcType=INTEGER},
+      starter_left_renovations = #{starterLeftRenovations,jdbcType=INTEGER},
+      starter_right_renovations = #{starterRightRenovations,jdbcType=INTEGER},
+      starter_left_remaining_time = #{starterLeftRemainingTime,jdbcType=VARCHAR},
+      starter_right_remaining_time = #{starterRightRemainingTime,jdbcType=VARCHAR},
+      starter_left_total_service_life = #{starterLeftTotalServiceLife,jdbcType=INTEGER},
+      starter_right_total_service_life = #{starterRightTotalServiceLife,jdbcType=INTEGER},
+      starter_left_expiration_date = #{starterLeftExpirationDate,jdbcType=DATE},
+      starter_right_expiration_date = #{starterRightExpirationDate,jdbcType=DATE},
+      starter_left_repaired_times = #{starterLeftRepairedTimes,jdbcType=INTEGER},
+      starter_right_repaired_times = #{starterRightRepairedTimes,jdbcType=INTEGER},
+      starter_left_manufacturing_factory = #{starterLeftManufacturingFactory,jdbcType=VARCHAR},
+      starter_right_manufacturing_factory = #{starterRightManufacturingFactory,jdbcType=VARCHAR},
+      starter_left_overhaul_factory = #{starterLeftOverhaulFactory,jdbcType=VARCHAR},
+      starter_right_overhaul_factory = #{starterRightOverhaulFactory,jdbcType=VARCHAR},
+      starter_left_last_delivery_date = #{starterLeftLastDeliveryDate,jdbcType=DATE},
+      starter_right_last_delivery_date = #{starterRightLastDeliveryDate,jdbcType=DATE},
+      starter_left_manufacture_date = #{starterLeftManufactureDate,jdbcType=DATE},
+      starter_right_manufacture_date = #{starterRightManufactureDate,jdbcType=DATE},
+      regulator_left_num = #{regulatorLeftNum,jdbcType=VARCHAR},
+      regulator_right_num = #{regulatorRightNum,jdbcType=VARCHAR},
+      regulator_left_model = #{regulatorLeftModel,jdbcType=VARCHAR},
+      regulator_right_model = #{regulatorRightModel,jdbcType=VARCHAR},
+      regulator_left_remaining_time = #{regulatorLeftRemainingTime,jdbcType=VARCHAR},
+      regulator_right_remaining_time = #{regulatorRightRemainingTime,jdbcType=VARCHAR},
+      regulator_left_residual_life = #{regulatorLeftResidualLife,jdbcType=VARCHAR},
+      regulator_right_residual_life = #{regulatorRightResidualLife,jdbcType=VARCHAR},
+      air_generator_model = #{airGeneratorModel,jdbcType=VARCHAR},
+      air_generator_num = #{airGeneratorNum,jdbcType=VARCHAR},
+      air_generator_start_times = #{airGeneratorStartTimes,jdbcType=INTEGER},
+      air_generator_repaired_times = #{airGeneratorRepairedTimes,jdbcType=VARCHAR},
+      air_generator_specified_starting_times = #{airGeneratorSpecifiedStartingTimes,jdbcType=INTEGER},
+      air_generator_overhaul_factory = #{airGeneratorOverhaulFactory,jdbcType=VARCHAR},
+      air_generator_manufacture_date = #{airGeneratorManufactureDate,jdbcType=DATE},
+      air_generator_remaining_times = #{airGeneratorRemainingTimes,jdbcType=INTEGER},
+      air_generator_repair_times = #{airGeneratorRepairTimes,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

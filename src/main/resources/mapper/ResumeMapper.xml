@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.engine_system.mapper.ResumeMapper">
+  <resultMap id="BaseResultMap" type="com.example.engine_system.entity.Resume">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="plane_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="type" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="engine_start_times" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="engine_s_ground_flight" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_sp_ground_flight" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_s_flight" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_sp_flight" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_s_state_work" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_ys_state_work" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_sp_state_work" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_s_all_state_work" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_sp_all_state_work" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="engine_s_main_cycle" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="engine_sp_main_cycle" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="receiver_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="receiver_start_times" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="receiver_s_ground_flight" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_sp_ground_flight" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_s_flight" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_sp_flight" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_s_state_work" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_ys_state_work" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_sp_state_work" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_s_all_state_work" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_sp_all_state_work" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="s_engine_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="s_engine_start_times" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="s_engine_last_repair" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="s_engine_last_oil_seal_repair" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="s_engine_all_start" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="s_engine_all_oil_seal" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, plane_id, type, engine_date, engine_start_times, engine_s_ground_flight, engine_sp_ground_flight, 
+    engine_s_flight, engine_sp_flight, engine_s_state_work, engine_ys_state_work, engine_sp_state_work, 
+    engine_s_all_state_work, engine_sp_all_state_work, engine_s_main_cycle, engine_sp_main_cycle, 
+    receiver_date, receiver_start_times, receiver_s_ground_flight, receiver_sp_ground_flight, 
+    receiver_s_flight, receiver_sp_flight, receiver_s_state_work, receiver_ys_state_work, 
+    receiver_sp_state_work, receiver_s_all_state_work, receiver_sp_all_state_work, s_engine_date, 
+    s_engine_start_times, s_engine_last_repair, s_engine_last_oil_seal_repair, s_engine_all_start, 
+    s_engine_all_oil_seal
+  </sql>
+
+<!--  <insert id="addResume" parameterType="java.util.ArrayList">-->
+<!--    insert into `resume`(type, plane_id, engine_date,-->
+<!--    engine_start_times, engine_s_ground_flight,-->
+<!--    engine_sp_ground_flight, engine_s_flight, engine_sp_flight,-->
+<!--    engine_s_state_work, engine_ys_state_work, engine_sp_state_work,-->
+<!--    engine_s_all_state_work, engine_sp_all_state_work,-->
+<!--    engine_s_main_cycle, engine_sp_main_cycle, receiver_date,-->
+<!--    receiver_start_times, receiver_s_ground_flight,-->
+<!--    receiver_sp_ground_flight, receiver_s_flight,-->
+<!--    receiver_sp_flight, receiver_s_state_work, receiver_ys_state_work,-->
+<!--    receiver_sp_state_work, receiver_s_all_state_work,-->
+<!--    receiver_sp_all_state_work, s_engine_date, s_engine_start_times,-->
+<!--    s_engine_last_repair, s_engine_last_oil_seal_repair,-->
+<!--    s_engine_all_start, s_engine_all_oil_seal) values-->
+<!--    <foreach collection="list" index="index" separator="," item="item">-->
+<!--      (#{item.type,jdbcType=VARCHAR}, #{item.planeId,jdbcType=INTEGER}, #{item.engineDate,jdbcType=DATE},-->
+<!--      #{item.engineStartTimes,jdbcType=INTEGER}, #{item.engineSGroundFlight,jdbcType=VARCHAR},-->
+<!--      #{item.engineSpGroundFlight,jdbcType=VARCHAR}, #{item.engineSFlight,jdbcType=VARCHAR}, #{item.engineSpFlight,jdbcType=VARCHAR},-->
+<!--      #{item.engineSStateWork,jdbcType=VARCHAR}, #{item.engineYsStateWork,jdbcType=VARCHAR}, #{item.engineSpStateWork,jdbcType=VARCHAR},-->
+<!--      #{item.engineSAllStateWork,jdbcType=VARCHAR}, #{item.engineSpAllStateWork,jdbcType=VARCHAR},-->
+<!--      #{item.engineSMainCycle,jdbcType=INTEGER}, #{item.engineSpMainCycle,jdbcType=INTEGER}, #{item.receiverDate,jdbcType=DATE},-->
+<!--      #{item.receiverStartTimes,jdbcType=INTEGER}, #{item.receiverSGroundFlight,jdbcType=VARCHAR},-->
+<!--      #{item.receiverSpGroundFlight,jdbcType=VARCHAR}, #{item.receiverSFlight,jdbcType=VARCHAR},-->
+<!--      #{item.receiverSpFlight,jdbcType=VARCHAR}, #{item.receiverSStateWork,jdbcType=VARCHAR}, #{item.receiverYsStateWork,jdbcType=VARCHAR},-->
+<!--      #{item.receiverSpStateWork,jdbcType=VARCHAR}, #{item.receiverSAllStateWork,jdbcType=VARCHAR},-->
+<!--      #{item.receiverSpAllStateWork,jdbcType=VARCHAR}, #{item.sEngineDate,jdbcType=DATE}, #{item.sEngineStartTimes,jdbcType=INTEGER},-->
+<!--      #{item.sEngineLastRepair,jdbcType=INTEGER}, #{item.sEngineLastOilSealRepair,jdbcType=INTEGER},-->
+<!--      #{item.sEngineAllStart,jdbcType=INTEGER}, #{item.sEngineAllOilSeal,jdbcType=INTEGER})-->
+<!--    </foreach>-->
+<!--  </insert>-->
+
+<!--  <insert id="addResume" parameterType="java.util.ArrayList">-->
+<!--    <foreach collection='list' separator=';' item='item'>-->
+<!--      insert into resume (id, type, plane_id, engine_date,-->
+<!--      engine_start_times, engine_s_ground_flight,-->
+<!--      engine_sp_ground_flight, engine_s_flight, engine_sp_flight,-->
+<!--      engine_s_state_work, engine_ys_state_work, engine_sp_state_work,-->
+<!--      engine_s_all_state_work, engine_sp_all_state_work,-->
+<!--      engine_s_main_cycle, engine_sp_main_cycle, receiver_date,-->
+<!--      receiver_start_times, receiver_s_ground_flight,-->
+<!--      receiver_sp_ground_flight, receiver_s_flight,-->
+<!--      receiver_sp_flight, receiver_s_state_work, receiver_ys_state_work,-->
+<!--      receiver_sp_state_work, receiver_s_all_state_work,-->
+<!--      receiver_sp_all_state_work, s_engine_date, s_engine_start_times,-->
+<!--      s_engine_last_repair, s_engine_last_oil_seal_repair,-->
+<!--      s_engine_all_start, s_engine_all_oil_seal) values-->
+<!--      (#{item.id,jdbcType=INTEGER}, #{item.type,jdbcType=VARCHAR}, #{item.planeId,jdbcType=INTEGER}, #{item.engineDate,jdbcType=DATE},-->
+<!--      #{item.engineStartTimes,jdbcType=INTEGER}, #{item.engineSGroundFlight,jdbcType=VARCHAR},-->
+<!--      #{item.engineSpGroundFlight,jdbcType=VARCHAR}, #{item.engineSFlight,jdbcType=VARCHAR}, #{item.engineSpFlight,jdbcType=VARCHAR},-->
+<!--      #{item.engineSStateWork,jdbcType=VARCHAR}, #{item.engineYsStateWork,jdbcType=VARCHAR}, #{item.engineSpStateWork,jdbcType=VARCHAR},-->
+<!--      #{item.engineSAllStateWork,jdbcType=VARCHAR}, #{item.engineSpAllStateWork,jdbcType=VARCHAR},-->
+<!--      #{item.engineSMainCycle,jdbcType=INTEGER}, #{item.engineSpMainCycle,jdbcType=INTEGER}, #{item.receiverDate,jdbcType=DATE},-->
+<!--      #{item.receiverStartTimes,jdbcType=INTEGER}, #{item.receiverSGroundFlight,jdbcType=VARCHAR},-->
+<!--      #{item.receiverSpGroundFlight,jdbcType=VARCHAR}, #{item.receiverSFlight,jdbcType=VARCHAR},-->
+<!--      #{item.receiverSpFlight,jdbcType=VARCHAR}, #{item.receiverSStateWork,jdbcType=VARCHAR}, #{item.receiverYsStateWork,jdbcType=VARCHAR},-->
+<!--      #{item.receiverSpStateWork,jdbcType=VARCHAR}, #{item.receiverSAllStateWork,jdbcType=VARCHAR},-->
+<!--      #{item.receiverSpAllStateWork,jdbcType=VARCHAR}, #{item.sEngineDate,jdbcType=DATE}, #{item.sEngineStartTimes,jdbcType=INTEGER},-->
+<!--      #{item.sEngineLastRepair,jdbcType=INTEGER}, #{item.sEngineLastOilSealRepair,jdbcType=INTEGER},-->
+<!--      #{item.sEngineAllStart,jdbcType=INTEGER}, #{item.sEngineAllOilSeal,jdbcType=INTEGER})-->
+<!--      ON DUPLICATE KEY UPDATE-->
+<!--      type = #{item.type,jdbcType=VARCHAR},-->
+<!--      plane_id = #{item.planeId,jdbcType=INTEGER},-->
+<!--      engine_date = #{item.engineDate,jdbcType=DATE},-->
+<!--      engine_start_times = #{item.engineStartTimes,jdbcType=INTEGER},-->
+<!--      engine_s_ground_flight = #{item.engineSGroundFlight,jdbcType=VARCHAR},-->
+<!--      engine_sp_ground_flight = #{item.engineSpGroundFlight,jdbcType=VARCHAR}-->
+<!--    </foreach>-->
+<!--  </insert>-->
+
+  <insert id="addResume" parameterType="java.util.ArrayList">
+      insert into resume (id, type, plane_id, engine_date,
+      engine_start_times, engine_s_ground_flight,
+      engine_sp_ground_flight, engine_s_flight, engine_sp_flight,
+      engine_s_state_work, engine_ys_state_work, engine_sp_state_work,
+      engine_s_all_state_work, engine_sp_all_state_work,
+      engine_s_main_cycle, engine_sp_main_cycle, receiver_date,
+      receiver_start_times, receiver_s_ground_flight,
+      receiver_sp_ground_flight, receiver_s_flight,
+      receiver_sp_flight, receiver_s_state_work, receiver_ys_state_work,
+      receiver_sp_state_work, receiver_s_all_state_work,
+      receiver_sp_all_state_work, s_engine_date, s_engine_start_times,
+      s_engine_last_repair, s_engine_last_oil_seal_repair,
+      s_engine_all_start, s_engine_all_oil_seal) values
+    <foreach collection="list" index="index" separator="," item="item">
+      (#{item.id,jdbcType=INTEGER}, #{item.type,jdbcType=VARCHAR}, #{item.planeId,jdbcType=INTEGER}, #{item.engineDate,jdbcType=DATE},
+      #{item.engineStartTimes,jdbcType=INTEGER}, #{item.engineSGroundFlight,jdbcType=VARCHAR},
+      #{item.engineSpGroundFlight,jdbcType=VARCHAR}, #{item.engineSFlight,jdbcType=VARCHAR}, #{item.engineSpFlight,jdbcType=VARCHAR},
+      #{item.engineSStateWork,jdbcType=VARCHAR}, #{item.engineYsStateWork,jdbcType=VARCHAR}, #{item.engineSpStateWork,jdbcType=VARCHAR},
+      #{item.engineSAllStateWork,jdbcType=VARCHAR}, #{item.engineSpAllStateWork,jdbcType=VARCHAR},
+      #{item.engineSMainCycle,jdbcType=INTEGER}, #{item.engineSpMainCycle,jdbcType=INTEGER}, #{item.receiverDate,jdbcType=DATE},
+      #{item.receiverStartTimes,jdbcType=INTEGER}, #{item.receiverSGroundFlight,jdbcType=VARCHAR},
+      #{item.receiverSpGroundFlight,jdbcType=VARCHAR}, #{item.receiverSFlight,jdbcType=VARCHAR},
+      #{item.receiverSpFlight,jdbcType=VARCHAR}, #{item.receiverSStateWork,jdbcType=VARCHAR}, #{item.receiverYsStateWork,jdbcType=VARCHAR},
+      #{item.receiverSpStateWork,jdbcType=VARCHAR}, #{item.receiverSAllStateWork,jdbcType=VARCHAR},
+      #{item.receiverSpAllStateWork,jdbcType=VARCHAR}, #{item.sEngineDate,jdbcType=DATE}, #{item.sEngineStartTimes,jdbcType=INTEGER},
+      #{item.sEngineLastRepair,jdbcType=INTEGER}, #{item.sEngineLastOilSealRepair,jdbcType=INTEGER},
+      #{item.sEngineAllStart,jdbcType=INTEGER}, #{item.sEngineAllOilSeal,jdbcType=INTEGER})
+    </foreach>
+    ON DUPLICATE KEY UPDATE
+    type = values(type),
+    plane_id = values(plane_id),
+    engine_date = values(engine_date),
+    engine_start_times = values(engine_start_times),
+    engine_s_ground_flight = values(engine_s_ground_flight),
+    engine_sp_ground_flight = values(engine_sp_ground_flight),
+    engine_s_flight = values(engine_s_flight),
+    engine_sp_flight = values(engine_sp_flight),
+    engine_s_state_work = values(engine_s_state_work),
+    engine_ys_state_work = values(engine_ys_state_work),
+    engine_sp_state_work = values(engine_sp_state_work),
+    engine_s_all_state_work = values(engine_s_all_state_work),
+    engine_sp_all_state_work = values(engine_sp_all_state_work),
+    engine_s_main_cycle = values(engine_s_main_cycle),
+    engine_sp_main_cycle = values(engine_sp_main_cycle),
+    receiver_date = values(receiver_date),
+    receiver_start_times = values(receiver_start_times),
+    receiver_s_ground_flight = values(receiver_s_ground_flight),
+    receiver_sp_ground_flight = values(receiver_sp_ground_flight),
+    receiver_s_flight = values(receiver_s_flight),
+    receiver_sp_flight = values(receiver_sp_flight),
+    receiver_s_state_work = values(receiver_s_state_work),
+    receiver_ys_state_work = values(receiver_ys_state_work),
+    receiver_sp_state_work = values(receiver_sp_state_work),
+    receiver_s_all_state_work = values(receiver_s_all_state_work),
+    receiver_sp_all_state_work = values(receiver_sp_all_state_work),
+    s_engine_date = values(s_engine_date),
+    s_engine_start_times = values(s_engine_start_times),
+    s_engine_last_repair = values(s_engine_last_repair),
+    s_engine_last_oil_seal_repair = values(s_engine_last_oil_seal_repair),
+    s_engine_all_start = values(s_engine_all_start),
+    s_engine_all_oil_seal = values(s_engine_all_oil_seal)
+  </insert>
+
+  <select id="getResumeById" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from resume where plane_id = #{id,jdbcType=INTEGER} and type = #{type,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from resume
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from resume
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.engine_system.entity.Resume">
+    insert into resume (id, plane_id, type, 
+      engine_date, engine_start_times, engine_s_ground_flight, 
+      engine_sp_ground_flight, engine_s_flight, engine_sp_flight, 
+      engine_s_state_work, engine_ys_state_work, engine_sp_state_work, 
+      engine_s_all_state_work, engine_sp_all_state_work, 
+      engine_s_main_cycle, engine_sp_main_cycle, receiver_date, 
+      receiver_start_times, receiver_s_ground_flight, 
+      receiver_sp_ground_flight, receiver_s_flight, 
+      receiver_sp_flight, receiver_s_state_work, receiver_ys_state_work, 
+      receiver_sp_state_work, receiver_s_all_state_work, 
+      receiver_sp_all_state_work, s_engine_date, s_engine_start_times, 
+      s_engine_last_repair, s_engine_last_oil_seal_repair, 
+      s_engine_all_start, s_engine_all_oil_seal)
+    values (#{id,jdbcType=INTEGER}, #{planeId,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, 
+      #{engineDate,jdbcType=DATE}, #{engineStartTimes,jdbcType=INTEGER}, #{engineSGroundFlight,jdbcType=VARCHAR}, 
+      #{engineSpGroundFlight,jdbcType=VARCHAR}, #{engineSFlight,jdbcType=VARCHAR}, #{engineSpFlight,jdbcType=VARCHAR}, 
+      #{engineSStateWork,jdbcType=VARCHAR}, #{engineYsStateWork,jdbcType=VARCHAR}, #{engineSpStateWork,jdbcType=VARCHAR}, 
+      #{engineSAllStateWork,jdbcType=VARCHAR}, #{engineSpAllStateWork,jdbcType=VARCHAR}, 
+      #{engineSMainCycle,jdbcType=INTEGER}, #{engineSpMainCycle,jdbcType=INTEGER}, #{receiverDate,jdbcType=DATE}, 
+      #{receiverStartTimes,jdbcType=INTEGER}, #{receiverSGroundFlight,jdbcType=VARCHAR}, 
+      #{receiverSpGroundFlight,jdbcType=VARCHAR}, #{receiverSFlight,jdbcType=VARCHAR}, 
+      #{receiverSpFlight,jdbcType=VARCHAR}, #{receiverSStateWork,jdbcType=VARCHAR}, #{receiverYsStateWork,jdbcType=VARCHAR}, 
+      #{receiverSpStateWork,jdbcType=VARCHAR}, #{receiverSAllStateWork,jdbcType=VARCHAR}, 
+      #{receiverSpAllStateWork,jdbcType=VARCHAR}, #{sEngineDate,jdbcType=DATE}, #{sEngineStartTimes,jdbcType=INTEGER}, 
+      #{sEngineLastRepair,jdbcType=INTEGER}, #{sEngineLastOilSealRepair,jdbcType=INTEGER}, 
+      #{sEngineAllStart,jdbcType=INTEGER}, #{sEngineAllOilSeal,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.engine_system.entity.Resume">
+    insert into resume
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="planeId != null">
+        plane_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="engineDate != null">
+        engine_date,
+      </if>
+      <if test="engineStartTimes != null">
+        engine_start_times,
+      </if>
+      <if test="engineSGroundFlight != null">
+        engine_s_ground_flight,
+      </if>
+      <if test="engineSpGroundFlight != null">
+        engine_sp_ground_flight,
+      </if>
+      <if test="engineSFlight != null">
+        engine_s_flight,
+      </if>
+      <if test="engineSpFlight != null">
+        engine_sp_flight,
+      </if>
+      <if test="engineSStateWork != null">
+        engine_s_state_work,
+      </if>
+      <if test="engineYsStateWork != null">
+        engine_ys_state_work,
+      </if>
+      <if test="engineSpStateWork != null">
+        engine_sp_state_work,
+      </if>
+      <if test="engineSAllStateWork != null">
+        engine_s_all_state_work,
+      </if>
+      <if test="engineSpAllStateWork != null">
+        engine_sp_all_state_work,
+      </if>
+      <if test="engineSMainCycle != null">
+        engine_s_main_cycle,
+      </if>
+      <if test="engineSpMainCycle != null">
+        engine_sp_main_cycle,
+      </if>
+      <if test="receiverDate != null">
+        receiver_date,
+      </if>
+      <if test="receiverStartTimes != null">
+        receiver_start_times,
+      </if>
+      <if test="receiverSGroundFlight != null">
+        receiver_s_ground_flight,
+      </if>
+      <if test="receiverSpGroundFlight != null">
+        receiver_sp_ground_flight,
+      </if>
+      <if test="receiverSFlight != null">
+        receiver_s_flight,
+      </if>
+      <if test="receiverSpFlight != null">
+        receiver_sp_flight,
+      </if>
+      <if test="receiverSStateWork != null">
+        receiver_s_state_work,
+      </if>
+      <if test="receiverYsStateWork != null">
+        receiver_ys_state_work,
+      </if>
+      <if test="receiverSpStateWork != null">
+        receiver_sp_state_work,
+      </if>
+      <if test="receiverSAllStateWork != null">
+        receiver_s_all_state_work,
+      </if>
+      <if test="receiverSpAllStateWork != null">
+        receiver_sp_all_state_work,
+      </if>
+      <if test="sEngineDate != null">
+        s_engine_date,
+      </if>
+      <if test="sEngineStartTimes != null">
+        s_engine_start_times,
+      </if>
+      <if test="sEngineLastRepair != null">
+        s_engine_last_repair,
+      </if>
+      <if test="sEngineLastOilSealRepair != null">
+        s_engine_last_oil_seal_repair,
+      </if>
+      <if test="sEngineAllStart != null">
+        s_engine_all_start,
+      </if>
+      <if test="sEngineAllOilSeal != null">
+        s_engine_all_oil_seal,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="planeId != null">
+        #{planeId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="engineDate != null">
+        #{engineDate,jdbcType=DATE},
+      </if>
+      <if test="engineStartTimes != null">
+        #{engineStartTimes,jdbcType=INTEGER},
+      </if>
+      <if test="engineSGroundFlight != null">
+        #{engineSGroundFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSpGroundFlight != null">
+        #{engineSpGroundFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSFlight != null">
+        #{engineSFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSpFlight != null">
+        #{engineSpFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSStateWork != null">
+        #{engineSStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="engineYsStateWork != null">
+        #{engineYsStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSpStateWork != null">
+        #{engineSpStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSAllStateWork != null">
+        #{engineSAllStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSpAllStateWork != null">
+        #{engineSpAllStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSMainCycle != null">
+        #{engineSMainCycle,jdbcType=INTEGER},
+      </if>
+      <if test="engineSpMainCycle != null">
+        #{engineSpMainCycle,jdbcType=INTEGER},
+      </if>
+      <if test="receiverDate != null">
+        #{receiverDate,jdbcType=DATE},
+      </if>
+      <if test="receiverStartTimes != null">
+        #{receiverStartTimes,jdbcType=INTEGER},
+      </if>
+      <if test="receiverSGroundFlight != null">
+        #{receiverSGroundFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverSpGroundFlight != null">
+        #{receiverSpGroundFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverSFlight != null">
+        #{receiverSFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverSpFlight != null">
+        #{receiverSpFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverSStateWork != null">
+        #{receiverSStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverYsStateWork != null">
+        #{receiverYsStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverSpStateWork != null">
+        #{receiverSpStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverSAllStateWork != null">
+        #{receiverSAllStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverSpAllStateWork != null">
+        #{receiverSpAllStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="sEngineDate != null">
+        #{sEngineDate,jdbcType=DATE},
+      </if>
+      <if test="sEngineStartTimes != null">
+        #{sEngineStartTimes,jdbcType=INTEGER},
+      </if>
+      <if test="sEngineLastRepair != null">
+        #{sEngineLastRepair,jdbcType=INTEGER},
+      </if>
+      <if test="sEngineLastOilSealRepair != null">
+        #{sEngineLastOilSealRepair,jdbcType=INTEGER},
+      </if>
+      <if test="sEngineAllStart != null">
+        #{sEngineAllStart,jdbcType=INTEGER},
+      </if>
+      <if test="sEngineAllOilSeal != null">
+        #{sEngineAllOilSeal,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.engine_system.entity.Resume">
+    update resume
+    <set>
+      <if test="planeId != null">
+        plane_id = #{planeId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="engineDate != null">
+        engine_date = #{engineDate,jdbcType=DATE},
+      </if>
+      <if test="engineStartTimes != null">
+        engine_start_times = #{engineStartTimes,jdbcType=INTEGER},
+      </if>
+      <if test="engineSGroundFlight != null">
+        engine_s_ground_flight = #{engineSGroundFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSpGroundFlight != null">
+        engine_sp_ground_flight = #{engineSpGroundFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSFlight != null">
+        engine_s_flight = #{engineSFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSpFlight != null">
+        engine_sp_flight = #{engineSpFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSStateWork != null">
+        engine_s_state_work = #{engineSStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="engineYsStateWork != null">
+        engine_ys_state_work = #{engineYsStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSpStateWork != null">
+        engine_sp_state_work = #{engineSpStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSAllStateWork != null">
+        engine_s_all_state_work = #{engineSAllStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSpAllStateWork != null">
+        engine_sp_all_state_work = #{engineSpAllStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="engineSMainCycle != null">
+        engine_s_main_cycle = #{engineSMainCycle,jdbcType=INTEGER},
+      </if>
+      <if test="engineSpMainCycle != null">
+        engine_sp_main_cycle = #{engineSpMainCycle,jdbcType=INTEGER},
+      </if>
+      <if test="receiverDate != null">
+        receiver_date = #{receiverDate,jdbcType=DATE},
+      </if>
+      <if test="receiverStartTimes != null">
+        receiver_start_times = #{receiverStartTimes,jdbcType=INTEGER},
+      </if>
+      <if test="receiverSGroundFlight != null">
+        receiver_s_ground_flight = #{receiverSGroundFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverSpGroundFlight != null">
+        receiver_sp_ground_flight = #{receiverSpGroundFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverSFlight != null">
+        receiver_s_flight = #{receiverSFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverSpFlight != null">
+        receiver_sp_flight = #{receiverSpFlight,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverSStateWork != null">
+        receiver_s_state_work = #{receiverSStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverYsStateWork != null">
+        receiver_ys_state_work = #{receiverYsStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverSpStateWork != null">
+        receiver_sp_state_work = #{receiverSpStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverSAllStateWork != null">
+        receiver_s_all_state_work = #{receiverSAllStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverSpAllStateWork != null">
+        receiver_sp_all_state_work = #{receiverSpAllStateWork,jdbcType=VARCHAR},
+      </if>
+      <if test="sEngineDate != null">
+        s_engine_date = #{sEngineDate,jdbcType=DATE},
+      </if>
+      <if test="sEngineStartTimes != null">
+        s_engine_start_times = #{sEngineStartTimes,jdbcType=INTEGER},
+      </if>
+      <if test="sEngineLastRepair != null">
+        s_engine_last_repair = #{sEngineLastRepair,jdbcType=INTEGER},
+      </if>
+      <if test="sEngineLastOilSealRepair != null">
+        s_engine_last_oil_seal_repair = #{sEngineLastOilSealRepair,jdbcType=INTEGER},
+      </if>
+      <if test="sEngineAllStart != null">
+        s_engine_all_start = #{sEngineAllStart,jdbcType=INTEGER},
+      </if>
+      <if test="sEngineAllOilSeal != null">
+        s_engine_all_oil_seal = #{sEngineAllOilSeal,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.engine_system.entity.Resume">
+    update resume
+    set plane_id = #{planeId,jdbcType=INTEGER},
+      type = #{type,jdbcType=VARCHAR},
+      engine_date = #{engineDate,jdbcType=DATE},
+      engine_start_times = #{engineStartTimes,jdbcType=INTEGER},
+      engine_s_ground_flight = #{engineSGroundFlight,jdbcType=VARCHAR},
+      engine_sp_ground_flight = #{engineSpGroundFlight,jdbcType=VARCHAR},
+      engine_s_flight = #{engineSFlight,jdbcType=VARCHAR},
+      engine_sp_flight = #{engineSpFlight,jdbcType=VARCHAR},
+      engine_s_state_work = #{engineSStateWork,jdbcType=VARCHAR},
+      engine_ys_state_work = #{engineYsStateWork,jdbcType=VARCHAR},
+      engine_sp_state_work = #{engineSpStateWork,jdbcType=VARCHAR},
+      engine_s_all_state_work = #{engineSAllStateWork,jdbcType=VARCHAR},
+      engine_sp_all_state_work = #{engineSpAllStateWork,jdbcType=VARCHAR},
+      engine_s_main_cycle = #{engineSMainCycle,jdbcType=INTEGER},
+      engine_sp_main_cycle = #{engineSpMainCycle,jdbcType=INTEGER},
+      receiver_date = #{receiverDate,jdbcType=DATE},
+      receiver_start_times = #{receiverStartTimes,jdbcType=INTEGER},
+      receiver_s_ground_flight = #{receiverSGroundFlight,jdbcType=VARCHAR},
+      receiver_sp_ground_flight = #{receiverSpGroundFlight,jdbcType=VARCHAR},
+      receiver_s_flight = #{receiverSFlight,jdbcType=VARCHAR},
+      receiver_sp_flight = #{receiverSpFlight,jdbcType=VARCHAR},
+      receiver_s_state_work = #{receiverSStateWork,jdbcType=VARCHAR},
+      receiver_ys_state_work = #{receiverYsStateWork,jdbcType=VARCHAR},
+      receiver_sp_state_work = #{receiverSpStateWork,jdbcType=VARCHAR},
+      receiver_s_all_state_work = #{receiverSAllStateWork,jdbcType=VARCHAR},
+      receiver_sp_all_state_work = #{receiverSpAllStateWork,jdbcType=VARCHAR},
+      s_engine_date = #{sEngineDate,jdbcType=DATE},
+      s_engine_start_times = #{sEngineStartTimes,jdbcType=INTEGER},
+      s_engine_last_repair = #{sEngineLastRepair,jdbcType=INTEGER},
+      s_engine_last_oil_seal_repair = #{sEngineLastOilSealRepair,jdbcType=INTEGER},
+      s_engine_all_start = #{sEngineAllStart,jdbcType=INTEGER},
+      s_engine_all_oil_seal = #{sEngineAllOilSeal,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
